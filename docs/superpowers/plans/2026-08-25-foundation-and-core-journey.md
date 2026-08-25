@@ -6,7 +6,7 @@
 
 **Architecture:** One Next.js App Router application. Design tokens live in `tokens/*.json` as the single source of truth and are compiled to three artefacts by a build script. All catalog and copy reads pass through `src/lib/data/` repositories and the i18n hook, never through direct imports, so a later swap to platform APIs or a CMS touches one folder. Business rules that carry money or legal risk — EMI maths, claim approval, lead attribution — are pure modules with exhaustive unit tests.
 
-**Tech Stack:** Next.js (App Router) · TypeScript strict · Tailwind CSS v4 · next-intl · zod · Vitest + Testing Library · pnpm
+**Tech Stack:** Next.js 16.3.2 (App Router) · React 19.2.8 · TypeScript 5.9.3 strict · Tailwind CSS 4.3.3 (CSS-first `@theme`) · next-intl 4.13.7 · zod 4.4.3 · Vitest 4.1.11 + Testing Library · pnpm 10.33.0
 
 ## Global Constraints
 
