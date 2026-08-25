@@ -12,7 +12,7 @@ scope — see [the spec](docs/superpowers/specs/2026-08-25-adhara-energy-website
 pnpm install
 pnpm tokens:build   # emits tokens.css, figma-variables.json, app-tokens.json
 pnpm dev            # http://localhost:3000 → redirects to /en
-pnpm test           # 144 tests
+pnpm test           # 158 tests
 pnpm build
 ```
 
@@ -28,7 +28,7 @@ pnpm build
 
 Locales: `en` complete, `hi` complete for these five pages.
 
-## Four rules the code enforces
+## Five rules the code enforces
 
 These are the constraints most likely to erode under maintenance, so each is a test rather
 than a convention.
@@ -48,11 +48,28 @@ than a convention.
    fallback plus a loud dev banner. The "no licence / no registration" claim is currently
    **unapproved** pending state-wise legal vetting.
 
+5. **Money never animates, and reduced motion is genuinely honoured.**
+   A rupee figure that counts up is briefly wrong, so no animation or transition class may
+   touch `PriceDual`. The reduced-motion reset clears `animation-timeline`, not just
+   duration — a scroll-driven animation ignores duration entirely. Enforced by
+   `src/styles/motion.test.ts`.
+
 ## Placeholder data
 
 Everything in `src/content/` and `src/lib/emi/emi-scheme.placeholder.ts` is invented for
 development and is **not an Adhara commitment**. Scheme placeholders: `schemeFee 0.18`,
 `eligibilityThreshold 0.6`, tenures `[12, 18, 24]`. Replacing them is a one-file edit.
+
+## Motion
+
+`src/styles/motion.css` is the whole motion layer — no animation library, no JavaScript for
+reveals. Beams scale from their left edge as if being laid, the headline ring draws itself,
+and sections rise on scroll via CSS scroll-driven animations behind `@supports`, so an
+unsupported browser shows content rather than waiting on an observer.
+
+Measured at **LCP 732ms, CLS 0.00** under Slow 4G with 4x CPU throttling, against a 2500ms
+budget. The hero headline animates with transform only: fading the LCP candidate delays its
+paint.
 
 ## Design system
 
