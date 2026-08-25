@@ -3,34 +3,48 @@ import { getTranslations } from 'next-intl/server'
 import { formatRupees } from '@/lib/format'
 import { type Criteria, toSearchParams } from '@/lib/data/filter'
 
-type Group = { key: keyof Criteria; labelKey: string; options: { value: number; label: string }[] }
+type Group = {
+  key: keyof Criteria
+  labelKey: string
+  options: { value: number; kind: 'under' | 'atLeast'; unit?: string }[]
+}
 
 const GROUPS: Group[] = [
   {
     key: 'maxPrice',
     labelKey: 'price',
     options: [
-      { value: 60000, label: `under ${formatRupees(60000)}` },
-      { value: 75000, label: `under ${formatRupees(75000)}` },
+      { value: 60000, kind: 'under' },
+      { value: 75000, kind: 'under' },
     ],
   },
   {
     key: 'minRange',
     labelKey: 'range',
     options: [
-      { value: 70, label: '70 km +' },
-      { value: 85, label: '85 km +' },
+      { value: 70, kind: 'atLeast', unit: 'km' },
+      { value: 85, kind: 'atLeast', unit: 'km' },
     ],
   },
   {
     key: 'minBatteryKwh',
     labelKey: 'battery',
     options: [
-      { value: 2, label: '2.0 kWh +' },
-      { value: 2.2, label: '2.2 kWh +' },
+      { value: 2, kind: 'atLeast', unit: 'kWh' },
+      { value: 2.2, kind: 'atLeast', unit: 'kWh' },
     ],
   },
 ]
+
+/** Threshold labels come from the catalog; only the figure and unit are interpolated. */
+function optionLabel(
+  t: (key: string, values?: Record<string, string>) => string,
+  option: Group['options'][number],
+): string {
+  return option.kind === 'under'
+    ? t('under', { amount: formatRupees(option.value) })
+    : t('atLeast', { value: `${option.value.toFixed(option.unit === 'kWh' ? 1 : 0)} ${option.unit}` })
+}
 
 /**
  * Filters are links, not form state — so they work without JavaScript, are shareable,
@@ -67,7 +81,9 @@ export async function ModelFilters({
         <fieldset key={group.key} className="flex flex-col gap-2">
           <legend className="text-sm font-medium text-ink">{t(group.labelKey)}</legend>
           <div className="flex flex-wrap gap-2">
-            {[{ value: undefined, label: t('any') }, ...group.options].map((option) => {
+            {[{ value: undefined as number | undefined, label: t('any') }, ...group.options.map(
+              (option) => ({ value: option.value, label: optionLabel(t, option) }),
+            )].map((option) => {
               const isActive = criteria[group.key] === option.value
               const next = { ...criteria }
               if (option.value === undefined) delete next[group.key]

@@ -94,7 +94,7 @@ export default async function ModelDetailPage({
               </Button>
             </div>
 
-            <ServiceabilityCheck modelSlug={model.slug} />
+            <ServiceabilityCheck modelSlug={model.slug} locale={locale} />
           </div>
         </div>
 

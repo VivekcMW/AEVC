@@ -14,9 +14,15 @@
       "bookNow": "Book Now",
       "viewModel": "View details",
       "calculate": "Calculate my EMI",
-      "seeAllModels": "See all models"
+      "seeAllModels": "See all models",
+      "registerInterest": "Register your interest"
     },
-    "price": { "full": "Full price", "monthly": "or {amount}/month", "perMonth": "/month" },
+    "price": {
+      "full": "Full price",
+      "monthly": "or {amount}/month",
+      "perMonth": "/month",
+      "dual": "or {monthly}/month · {tenure} months"
+    },
     "skipToContent": "Skip to content",
     "footer": {
       "explore": "Explore",
@@ -25,7 +31,19 @@
       "placeholderNotice": "Prices, specifications and scheme terms shown on this site are development placeholders pending commercial and legal sign-off.",
       "rights": "Adhara Energy"
     },
-    "localeSwitcher": { "label": "Language", "en": "English", "hi": "हिन्दी" }
+    "localeSwitcher": {
+      "label": "Language",
+      "en": "English",
+      "hi": "हिन्दी"
+    },
+    "spec": {
+      "range": "Range",
+      "topSpeed": "Top speed",
+      "battery": "Battery",
+      "fullPrice": "Full price",
+      "model": "Model",
+      "from": "From"
+    }
   },
   "home": {
     "heroEyebrow": "Low-speed electric two-wheelers",
@@ -62,7 +80,9 @@
       "battery": "Minimum battery",
       "any": "Any",
       "clear": "Clear filters",
-      "results": "{count, plural, =0 {No models match} one {1 model} other {# models}}"
+      "results": "{count, plural, =0 {No models match} one {1 model} other {# models}}",
+      "under": "under {amount}",
+      "atLeast": "{value} +"
     },
     "empty": "No model matches those filters. Try widening them."
   },
@@ -80,7 +100,8 @@
       "yes": "We deliver to {pincode}. Estimated delivery in {days} days.",
       "no": "We don't deliver to {pincode} yet. Leave your number and we'll tell you when we do.",
       "failed": "We couldn't check that just now. Try again — it's us, not your pincode.",
-      "invalid": "Enter a six-digit Indian pincode."
+      "invalid": "Enter a six-digit Indian pincode.",
+      "leadPrompt": "<link>Register your interest</link> and we'll call you when we reach you."
     },
     "cta": {
       "buy": "Buy online",

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import { PriceDual } from '@/components/ui/PriceDual'
 import { calculateEmi, scheme } from '@/lib/emi'
 import type { VehicleModel } from '@/lib/data/types'
@@ -7,6 +8,7 @@ import { VehicleGlyph } from './VehicleGlyph'
 const LONGEST_TENURE = scheme.tenures[scheme.tenures.length - 1]
 
 export function ModelCard({ model, locale = 'en' }: { model: VehicleModel; locale?: string }) {
+  const t = useTranslations('common')
   const emi = calculateEmi({ priceInr: model.priceInr, tenureMonths: LONGEST_TENURE })
   const href = `/${locale}/vehicles/${model.slug}`
 
@@ -32,9 +34,9 @@ export function ModelCard({ model, locale = 'en' }: { model: VehicleModel; local
 
         <dl className="tnum grid grid-cols-3 gap-3 border-y border-forest/10 py-3 text-sm">
           {[
-            { label: 'Range', value: `${model.rangeKm} km` },
-            { label: 'Top speed', value: `${model.topSpeedKmph} km/h` },
-            { label: 'Battery', value: `${model.batteryKwh} kWh` },
+            { label: t('spec.range'), value: `${model.rangeKm} km` },
+            { label: t('spec.topSpeed'), value: `${model.topSpeedKmph} km/h` },
+            { label: t('spec.battery'), value: `${model.batteryKwh} kWh` },
           ].map((spec) => (
             <div key={spec.label}>
               <dt className="text-[0.6875rem] tracking-wide text-ink/55 uppercase">{spec.label}</dt>
@@ -49,7 +51,7 @@ export function ModelCard({ model, locale = 'en' }: { model: VehicleModel; local
             href={href}
             className="inline-flex items-center gap-1.5 self-start text-sm font-semibold text-forest underline decoration-forest/30 decoration-2 underline-offset-4 transition-colors hover:decoration-turmeric"
           >
-            View details
+            {t('cta.viewModel')}
             <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
               →
             </span>

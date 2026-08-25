@@ -10,8 +10,15 @@ type State = { kind: 'idle' } | { kind: 'checking' } | { kind: 'invalid' } | Ser
 
 const PINCODE = /^[1-9][0-9]{5}$/
 
-export function ServiceabilityCheck({ modelSlug }: { modelSlug?: string }) {
+export function ServiceabilityCheck({
+  modelSlug,
+  locale = 'en',
+}: {
+  modelSlug?: string
+  locale?: string
+}) {
   const t = useTranslations('model.serviceability')
+  const tc = useTranslations('common.cta')
   const [pincode, setPincode] = useState('')
   const [state, setState] = useState<State>({ kind: 'idle' })
 
@@ -85,15 +92,18 @@ export function ServiceabilityCheck({ modelSlug }: { modelSlug?: string }) {
         {status === 'unserviceable' && (
           <div className="flex flex-col gap-3">
             <ChargeState status="low" label={t('no', { pincode })} />
+            {/* An unserved pincode is a lead, not a dead end. */}
             <p className="text-sm text-ink/70">
-              {/* An unserved pincode is a lead, not a dead end. */}
-              <a
-                href={`/en/emi/calculator?pincode=${pincode}${modelSlug ? `&model=${modelSlug}` : ''}`}
-                className="font-semibold text-forest underline decoration-2 underline-offset-4 hover:decoration-turmeric"
-              >
-                Register your interest
-              </a>{' '}
-              and we&apos;ll call you when we reach you.
+              {t.rich('leadPrompt', {
+                link: (chunks) => (
+                  <a
+                    href={`/${locale}/emi/calculator${modelSlug ? `?model=${modelSlug}` : ''}`}
+                    className="font-semibold text-forest underline decoration-2 underline-offset-4 hover:decoration-turmeric"
+                  >
+                    {chunks}
+                  </a>
+                ),
+              })}
             </p>
           </div>
         )}

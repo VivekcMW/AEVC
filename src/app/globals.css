@@ -69,7 +69,22 @@ h4 {
 :lang(hi) h3,
 :lang(hi) h4 {
   font-family: var(--font-anek-devanagari), system-ui, sans-serif;
-  letter-spacing: normal;
+}
+
+/*
+ * Devanagari must never be letterspaced: tracking pulls matras away from their
+ * consonants and breaks conjuncts. This overrides the tracking utilities that are
+ * correct for Latin eyebrows and small caps, so those styles need no locale forks.
+ * Latin runs inside Hindi copy — model names, rupee figures — are unaffected visually
+ * because they carry no tracking of their own.
+ */
+:lang(hi) * {
+  letter-spacing: normal !important;
+}
+
+/* Devanagari has no case, so uppercasing is at best a no-op and at worst confusing. */
+:lang(hi) .uppercase {
+  text-transform: none;
 }
 
 /* Every rupee figure aligns in a column. */

@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs'
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
+import { renderIntl } from '@/test/render'
 import { StickyCtaBar } from './StickyCtaBar'
 
 afterEach(cleanup)
@@ -13,7 +14,7 @@ afterEach(cleanup)
  */
 describe('monthly figures never appear alone', () => {
   it('StickyCtaBar carries the full price beside the monthly one', () => {
-    render(
+    renderIntl(
       <StickyCtaBar full={54990} monthly={2704} tenure={24} href="/en/emi" label="Enroll in EMI" />,
     )
     expect(screen.getByText(/₹54,990/)).toBeDefined()
@@ -28,7 +29,7 @@ describe('monthly figures never appear alone', () => {
   })
 
   it('PriceDual can render on a dark ground, so Forest sections need no bespoke price markup', () => {
-    render(<StickyCtaBar full={54990} monthly={2704} tenure={24} href="/x" label="y" />)
+    renderIntl(<StickyCtaBar full={54990} monthly={2704} tenure={24} href="/x" label="y" />)
     expect(screen.getByText(/24/)).toBeDefined()
   })
 })

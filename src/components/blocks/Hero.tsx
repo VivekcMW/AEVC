@@ -11,6 +11,7 @@ const LONGEST_TENURE = scheme.tenures[scheme.tenures.length - 1]
 
 export async function Hero({ locale, models }: { locale: string; models: VehicleModel[] }) {
   const t = await getTranslations({ locale, namespace: 'home' })
+  const tc = await getTranslations({ locale, namespace: 'common' })
 
   // The headline number is the cheapest entry point across the range — the figure a
   // first-time buyer is actually deciding on.
@@ -60,8 +61,8 @@ export async function Hero({ locale, models }: { locale: string; models: Vehicle
             />
             <dl className="tnum mt-4 grid grid-cols-2 gap-3 border-t border-white/12 pt-4 text-sm">
               {[
-                { k: 'Model', v: cheapest.name },
-                { k: 'Range', v: `${cheapest.rangeKm} km` },
+                { k: tc('spec.model'), v: cheapest.name },
+                { k: tc('spec.range'), v: `${cheapest.rangeKm} km` },
               ].map((row) => (
                 <div key={row.k}>
                   <dt className="text-[0.6875rem] tracking-wide text-white/50 uppercase">{row.k}</dt>

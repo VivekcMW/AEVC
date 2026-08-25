@@ -19,6 +19,7 @@ export function EmiCalculator({
   initialSlug?: string
 }) {
   const t = useTranslations('emi.calculator')
+  const tc = useTranslations('common.spec')
   const [slug, setSlug] = useState(
     initialSlug && models.some((m) => m.slug === initialSlug) ? initialSlug : models[0].slug,
   )
@@ -62,15 +63,15 @@ export function EmiCalculator({
 
         <dl className="tnum flex flex-wrap gap-x-8 gap-y-2 border-t border-forest/10 pt-4 text-sm">
           <div>
-            <dt className="text-ink/55">Range</dt>
+            <dt className="text-ink/55">{tc('range')}</dt>
             <dd className="font-medium text-ink">{model.rangeKm} km</dd>
           </div>
           <div>
-            <dt className="text-ink/55">Battery</dt>
+            <dt className="text-ink/55">{tc('battery')}</dt>
             <dd className="font-medium text-ink">{model.batteryKwh} kWh</dd>
           </div>
           <div>
-            <dt className="text-ink/55">Full price</dt>
+            <dt className="text-ink/55">{tc('fullPrice')}</dt>
             <dd className="font-medium text-ink">{formatRupees(model.priceInr)}</dd>
           </div>
         </dl>
