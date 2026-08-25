@@ -1,21 +1,23 @@
 import { Anek_Devanagari, Anek_Latin, Inter } from 'next/font/google'
-import { fontVariableNames, FONT_VARIABLES } from './fonts'
+import { FONT_VARIABLES, fontVariableNames } from './fonts'
 
+// next/font is a build-time transform and requires literal argument values —
+// FONT_VARIABLES stays the single source of truth for everything downstream.
 export const anekLatin = Anek_Latin({
   subsets: ['latin'],
-  variable: FONT_VARIABLES.anekLatin,
+  variable: '--font-anek-latin',
   display: 'swap',
 })
 
 export const inter = Inter({
   subsets: ['latin'],
-  variable: FONT_VARIABLES.inter,
+  variable: '--font-inter',
   display: 'swap',
 })
 
 export const anekDevanagari = Anek_Devanagari({
   subsets: ['devanagari', 'latin'],
-  variable: FONT_VARIABLES.anekDevanagari,
+  variable: '--font-anek-devanagari',
   display: 'swap',
 })
 

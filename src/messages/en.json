@@ -1,0 +1,128 @@
+{
+  "common": {
+    "brand": "Adhara Energy",
+    "tagline": "Ride on solid ground.",
+    "nav": {
+      "vehicles": "Vehicles",
+      "emi": "EMI Scheme",
+      "calculator": "Calculator",
+      "testRide": "Book a Test Ride",
+      "dealers": "Find a Dealer",
+      "support": "Support"
+    },
+    "cta": {
+      "bookNow": "Book Now",
+      "viewModel": "View details",
+      "calculate": "Calculate my EMI",
+      "seeAllModels": "See all models"
+    },
+    "price": { "full": "Full price", "monthly": "or {amount}/month", "perMonth": "/month" },
+    "skipToContent": "Skip to content",
+    "footer": {
+      "explore": "Explore",
+      "company": "Company",
+      "legal": "Legal",
+      "placeholderNotice": "Prices, specifications and scheme terms shown on this site are development placeholders pending commercial and legal sign-off.",
+      "rights": "Adhara Energy"
+    },
+    "localeSwitcher": { "label": "Language", "en": "English", "hi": "हिन्दी" }
+  },
+  "home": {
+    "heroEyebrow": "Low-speed electric two-wheelers",
+    "heroTitle": "The electric ride a bank can't say no to.",
+    "heroBody": "Adhara means foundation. Pay monthly, with no bank and no credit check — and ride home the moment you're eligible.",
+    "heroCta": "Book now — EMI from {amount}/month",
+    "heroSecondary": "Book a free test ride",
+    "emiStripTitle": "How the Adhara scheme works",
+    "emiStripBody": "Four steps, no lender, nothing hidden.",
+    "steps": {
+      "enroll": "Enroll",
+      "enrollBody": "Pick a model and a tenure. An OTP is all the identity we need.",
+      "pay": "Pay monthly",
+      "payBody": "A fixed amount every month. No bank, no credit check, no hidden charge.",
+      "alert": "Get your eligibility alert",
+      "alertBody": "We tell you the moment your vehicle is unlocked for delivery.",
+      "ride": "Ride home",
+      "rideBody": "Home delivery, or collect from your nearest dealer."
+    },
+    "modelsTitle": "Choose your ride",
+    "modelsBody": "Every model is built to low-speed specification and carries the same battery-health warranty.",
+    "calcTeaserTitle": "See your monthly number before you decide",
+    "calcTeaserBody": "Pick a model and a tenure. We show the monthly amount, the total, and exactly what the scheme costs against paying in full.",
+    "trustTitle": "What we put in writing"
+  },
+  "vehicles": {
+    "title": "Vehicles",
+    "intro": "Low-speed electric two-wheelers built for Indian streets.",
+    "filters": {
+      "heading": "Filter",
+      "price": "Maximum price",
+      "range": "Minimum range",
+      "topSpeed": "Minimum top speed",
+      "battery": "Minimum battery",
+      "any": "Any",
+      "clear": "Clear filters",
+      "results": "{count, plural, =0 {No models match} one {1 model} other {# models}}"
+    },
+    "empty": "No model matches those filters. Try widening them."
+  },
+  "model": {
+    "specsTitle": "Specifications",
+    "colourTitle": "Colour",
+    "faqTitle": "Common questions",
+    "classificationTitle": "How this vehicle is classified",
+    "serviceability": {
+      "heading": "Check delivery at your pincode",
+      "label": "Pincode",
+      "check": "Check",
+      "checking": "Checking",
+      "retry": "Try again",
+      "yes": "We deliver to {pincode}. Estimated delivery in {days} days.",
+      "no": "We don't deliver to {pincode} yet. Leave your number and we'll tell you when we do.",
+      "failed": "We couldn't check that just now. Try again — it's us, not your pincode.",
+      "invalid": "Enter a six-digit Indian pincode."
+    },
+    "cta": {
+      "buy": "Buy online",
+      "buyPending": "Online checkout opens soon",
+      "emi": "Enroll in EMI",
+      "testRide": "Book a test ride"
+    },
+    "tenureLabel": "Tenure"
+  },
+  "emi": {
+    "title": "The Adhara EMI scheme",
+    "subtitle": "No bank. No credit check. No surprises.",
+    "whyNoBank": "Why there's no bank involved",
+    "whyNoBankBody": "A bank loan needs a credit history that most first-time riders don't have. Adhara carries that risk instead: you pay us monthly, and your vehicle is released for delivery once you cross the eligibility mark. Nothing is reported to a credit bureau, either way.",
+    "stepsTitle": "The four steps",
+    "termsPending": "The versioned scheme terms and conditions publish here once legal sign-off concludes. Until then, ask any dealer for the current terms in writing.",
+    "calculator": {
+      "title": "EMI calculator",
+      "intro": "Pick a model and a tenure. Everything below updates together — including what the scheme costs you over paying in full.",
+      "model": "Model",
+      "tenure": "Tenure",
+      "months": "{count} months",
+      "monthly": "Monthly payment",
+      "total": "Total you'll pay",
+      "premium": "Premium over full price",
+      "eligibility": "Delivery unlocked after",
+      "eligibilityValue": "{count} monthly payments",
+      "transparencyNote": "This is what the scheme costs compared with paying {amount} today. We show it because you should be able to choose with your eyes open.",
+      "startEnrollment": "Register my interest"
+    },
+    "interest": {
+      "title": "Register your interest",
+      "body": "Enrollment opens with online checkout. Leave your number and we'll call you the day it does.",
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "pincode": "Pincode",
+      "submit": "Register my interest",
+      "submitting": "Sending",
+      "successTitle": "We've got it.",
+      "successBody": "Your reference is {id}. We'll call you on the number you gave us.",
+      "fallback": "If this keeps failing, call us on 1800 000 0000."
+    }
+  }
+}
