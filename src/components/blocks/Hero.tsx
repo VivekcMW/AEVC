@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server'
 import { Button } from '@/components/ui/Button'
+import { PriceDual } from '@/components/ui/PriceDual'
 import { formatRupees } from '@/lib/format'
 import { calculateEmi, scheme } from '@/lib/emi'
 import type { VehicleModel } from '@/lib/data/types'
@@ -57,11 +58,10 @@ export async function Hero({ locale, models }: { locale: string; models: Vehicle
               label={`${cheapest.name} technical illustration`}
               className="h-44 w-full text-white sm:h-56"
             />
-            <dl className="tnum mt-4 grid grid-cols-3 gap-3 border-t border-white/12 pt-4 text-sm">
+            <dl className="tnum mt-4 grid grid-cols-2 gap-3 border-t border-white/12 pt-4 text-sm">
               {[
                 { k: 'Model', v: cheapest.name },
                 { k: 'Range', v: `${cheapest.rangeKm} km` },
-                { k: 'From', v: `${formatRupees(entry.monthly)}/mo` },
               ].map((row) => (
                 <div key={row.k}>
                   <dt className="text-[0.6875rem] tracking-wide text-white/50 uppercase">{row.k}</dt>
@@ -69,6 +69,17 @@ export async function Hero({ locale, models }: { locale: string; models: Vehicle
                 </div>
               ))}
             </dl>
+
+            {/* The full price must sit with the monthly figure the CTA advertises. */}
+            <div className="mt-4 border-t border-white/12 pt-4">
+              <PriceDual
+                full={cheapest.priceInr}
+                monthly={entry.monthly}
+                tenure={entry.tenureMonths}
+                size="sm"
+                tone="light"
+              />
+            </div>
           </div>
         </div>
       </div>

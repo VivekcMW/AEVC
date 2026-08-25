@@ -11,6 +11,7 @@ import { StickyCtaBar } from '@/components/blocks/StickyCtaBar'
 import { getFaqs } from '@/lib/data/faqs'
 import { getModel, getModels } from '@/lib/data/models'
 import { calculateEmi, scheme } from '@/lib/emi'
+import { formatRupees } from '@/lib/format'
 import { Claim } from '@/lib/legal/Claim'
 import { routing } from '@/i18n/routing'
 
@@ -78,7 +79,7 @@ export default async function ModelDetailPage({
                 {tenures.map((emi) => (
                   <div key={emi.tenureMonths}>
                     <dt className="text-ink/55">{emi.tenureMonths} months</dt>
-                    <dd className="font-medium text-ink">₹{emi.monthly.toLocaleString('en-IN')}/mo</dd>
+                    <dd className="font-medium text-ink">{formatRupees(emi.monthly)}/mo</dd>
                   </div>
                 ))}
               </dl>
@@ -123,6 +124,7 @@ export default async function ModelDetailPage({
       </div>
 
       <StickyCtaBar
+        full={model.priceInr}
         monthly={longest.monthly}
         tenure={longest.tenureMonths}
         href={`/${locale}/emi/calculator?model=${model.slug}`}

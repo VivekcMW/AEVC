@@ -15,7 +15,7 @@ Every task's requirements implicitly include this section. Values are copied ver
 - **Palette, exact hexes:** Forest `#0E3B2E` · Turmeric `#E8A020` · Ink `#14201B` · Mist `#F4F6F1` · Charge Full `#2F9E6B` · Charge Low `#E8A020` · Charge Out `#C6453C`
 - **Hover, border and disabled variants are derived by the token build, never hand-authored.** Each is asserted to WCAG AA contrast against its intended ground.
 - **One primary CTA per page.** A dev-time guard warns on a second mounted `variant="primary"` button. The guard counts primary buttons only — `ChargeState` chips share the Turmeric hue deliberately and are not CTAs.
-- **`PriceDual` is the only component permitted to render a price.** Full price and monthly EMI figure always appear together.
+- **A monthly EMI figure never appears without the full price in the same view**, with `PriceDual` as the canonical renderer of the pair. Filter thresholds and the calculator's own full-price cell are outside the rule. (Corrected during execution: the original absolute phrasing enforced nothing and let the hero ship a bare monthly figure.)
 - **Pages never import from `src/content/` or `src/messages/` directly** — only via `src/lib/data/` and the i18n hook.
 - **No unapproved legal claim or testimonial renders as fact in a production build.**
 - **The EMI calculator always displays total cost and premium alongside every monthly figure.**

@@ -10,18 +10,27 @@ export function PriceDual({
   monthly,
   tenure,
   size = 'md',
+  tone = 'dark',
 }: {
   full: number
   monthly: number
   tenure: number
   size?: 'sm' | 'md' | 'lg'
+  /** 'light' for Forest grounds, so dark sections need no bespoke price markup. */
+  tone?: 'dark' | 'light'
 }) {
   const fullSize = { sm: 'text-lg', md: 'text-2xl', lg: 'text-3xl' }[size]
+  const palette =
+    tone === 'light'
+      ? { full: 'text-white', meta: 'text-white/70', monthly: 'text-turmeric' }
+      : { full: 'text-ink', meta: 'text-ink/70', monthly: 'text-forest' }
+
   return (
     <div className="tnum flex flex-wrap items-baseline gap-x-3 gap-y-1">
-      <span className={`${fullSize} font-semibold text-ink`}>{formatRupees(full)}</span>
-      <span className="text-sm text-ink/70">
-        or <strong className="font-semibold text-forest">{formatRupees(monthly)}</strong>/month
+      <span className={`${fullSize} font-semibold ${palette.full}`}>{formatRupees(full)}</span>
+      <span className={`text-sm ${palette.meta}`}>
+        or <strong className={`font-semibold ${palette.monthly}`}>{formatRupees(monthly)}</strong>
+        /month
         {' · '}
         {tenure} months
       </span>

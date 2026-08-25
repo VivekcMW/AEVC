@@ -136,9 +136,13 @@ through the i18n hook. This single constraint is what makes a later swap to Stra
 or platform APIs a change inside one folder rather than across every page — which is how
 proposal Section 6's single-source-of-truth rule is honoured before the platform exists.
 
-A second, narrower rule: `PriceDual` is the **only** component that renders a price. Section
-5.2 requires the full price and the monthly EMI figure to appear side by side "always", and a
-single renderer is what makes that structurally true rather than a habit.
+A second, narrower rule: **a monthly EMI figure never appears without the full price in the
+same view**, and `PriceDual` is the canonical renderer of that pair. Non-product figures —
+filter thresholds like "under ₹60,000", the calculator's own full-price cell — are outside the
+rule. This phrasing replaces an earlier, absolute version ("PriceDual is the only component
+that renders a price") which was untrue and therefore enforced nothing: it let the home-page
+hero ship a monthly figure with no full price beside it. The invariant is now tested in
+`src/components/blocks/price-invariant.test.tsx`.
 
 ### 4.3 Unit boundaries
 
