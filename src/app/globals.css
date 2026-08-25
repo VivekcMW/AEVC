@@ -1,0 +1,145 @@
+@import 'tailwindcss';
+@import '../styles/tokens.css';
+
+/*
+ * Maps the generated --adhara-* tokens into Tailwind's theme namespace.
+ * Font families are the exception: next/font self-hosts each face under a
+ * generated family name, so the web stack references its CSS variable while
+ * tokens/type.json keeps the real family names for the app and Figma exports.
+ */
+@theme inline {
+  --color-forest: var(--adhara-color-forest);
+  --color-forest-hover: var(--adhara-color-forest-hover);
+  --color-forest-active: var(--adhara-color-forest-active);
+  --color-forest-border: var(--adhara-color-forest-border);
+
+  --color-turmeric: var(--adhara-color-turmeric);
+  --color-turmeric-hover: var(--adhara-color-turmeric-hover);
+  --color-turmeric-active: var(--adhara-color-turmeric-active);
+  --color-turmeric-disabled: var(--adhara-color-turmeric-disabled);
+
+  --color-ink: var(--adhara-color-ink);
+  --color-mist: var(--adhara-color-mist);
+  --color-surface: var(--adhara-color-surface);
+
+  --color-charge-full: var(--adhara-color-charge-full);
+  --color-charge-low: var(--adhara-color-charge-low);
+  --color-charge-out: var(--adhara-color-charge-out);
+
+  --font-heading: var(--font-anek-latin), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-devanagari: var(--font-anek-devanagari), system-ui, sans-serif;
+
+  --radius-sm: var(--adhara-radius-sm);
+  --radius-md: var(--adhara-radius-md);
+  --radius-lg: var(--adhara-radius-lg);
+
+  --text-xs: var(--adhara-text-xs);
+  --text-sm: var(--adhara-text-sm);
+  --text-base: var(--adhara-text-base);
+  --text-lg: var(--adhara-text-lg);
+  --text-xl: var(--adhara-text-xl);
+  --text-2xl: var(--adhara-text-2xl);
+  --text-3xl: var(--adhara-text-3xl);
+  --text-4xl: var(--adhara-text-4xl);
+  --text-5xl: var(--adhara-text-5xl);
+  --text-6xl: var(--adhara-text-6xl);
+  --text-display-sm: var(--adhara-text-display-sm);
+  --text-display-md: var(--adhara-text-display-md);
+  --text-display-lg: var(--adhara-text-display-lg);
+
+  --radius-xl: var(--adhara-radius-xl);
+  --radius-2xl: var(--adhara-radius-2xl);
+  --radius-pill: var(--adhara-radius-pill);
+}
+
+/*
+ * Display type. Set at light-to-medium weight rather than bold: at this scale weight
+ * reads as shouting, while restraint reads as confidence — the lesson from the reference.
+ */
+.display {
+  font-family: var(--font-anek-latin), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+:lang(hi) .display {
+  font-family: var(--font-anek-devanagari), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.22;
+}
+
+/* Big figures — the numbers this category is actually decided on. */
+.figure {
+  font-family: var(--font-anek-latin), system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+body {
+  background: var(--adhara-color-mist);
+  color: var(--adhara-color-ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: var(--adhara-leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-anek-latin), system-ui, sans-serif;
+  line-height: var(--adhara-leading-tight);
+  letter-spacing: -0.02em;
+}
+
+/* Hindi sets the whole page in the script-matched sibling face. */
+:lang(hi) body,
+:lang(hi) h1,
+:lang(hi) h2,
+:lang(hi) h3,
+:lang(hi) h4 {
+  font-family: var(--font-anek-devanagari), system-ui, sans-serif;
+}
+
+/*
+ * Devanagari must never be letterspaced: tracking pulls matras away from their
+ * consonants and breaks conjuncts. This overrides the tracking utilities that are
+ * correct for Latin eyebrows and small caps, so those styles need no locale forks.
+ * Latin runs inside Hindi copy — model names, rupee figures — are unaffected visually
+ * because they carry no tracking of their own.
+ */
+:lang(hi) * {
+  letter-spacing: normal !important;
+}
+
+/* Devanagari has no case, so uppercasing is at best a no-op and at worst confusing. */
+:lang(hi) .uppercase {
+  text-transform: none;
+}
+
+/* Every rupee figure aligns in a column. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+:where(a, button, input, select, textarea, summary, details):focus-visible {
+  outline: 3px solid var(--adhara-color-turmeric);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -6,7 +6,7 @@
 
 **Architecture:** One Next.js App Router application. Design tokens live in `tokens/*.json` as the single source of truth and are compiled to three artefacts by a build script. All catalog and copy reads pass through `src/lib/data/` repositories and the i18n hook, never through direct imports, so a later swap to platform APIs or a CMS touches one folder. Business rules that carry money or legal risk — EMI maths, claim approval, lead attribution — are pure modules with exhaustive unit tests.
 
-**Tech Stack:** Next.js (App Router) · TypeScript strict · Tailwind CSS v4 · next-intl · zod · Vitest + Testing Library · pnpm
+**Tech Stack:** Next.js 16.3.2 (App Router) · React 19.2.8 · TypeScript 5.9.3 strict · Tailwind CSS 4.3.3 (CSS-first `@theme`) · next-intl 4.13.7 · zod 4.4.3 · Vitest 4.1.11 + Testing Library · pnpm 10.33.0
 
 ## Global Constraints
 
@@ -15,7 +15,7 @@ Every task's requirements implicitly include this section. Values are copied ver
 - **Palette, exact hexes:** Forest `#0E3B2E` · Turmeric `#E8A020` · Ink `#14201B` · Mist `#F4F6F1` · Charge Full `#2F9E6B` · Charge Low `#E8A020` · Charge Out `#C6453C`
 - **Hover, border and disabled variants are derived by the token build, never hand-authored.** Each is asserted to WCAG AA contrast against its intended ground.
 - **One primary CTA per page.** A dev-time guard warns on a second mounted `variant="primary"` button. The guard counts primary buttons only — `ChargeState` chips share the Turmeric hue deliberately and are not CTAs.
-- **`PriceDual` is the only component permitted to render a price.** Full price and monthly EMI figure always appear together.
+- **A monthly EMI figure never appears without the full price in the same view**, with `PriceDual` as the canonical renderer of the pair. Filter thresholds and the calculator's own full-price cell are outside the rule. (Corrected during execution: the original absolute phrasing enforced nothing and let the hero ship a bare monthly figure.)
 - **Pages never import from `src/content/` or `src/messages/` directly** — only via `src/lib/data/` and the i18n hook.
 - **No unapproved legal claim or testimonial renders as fact in a production build.**
 - **The EMI calculator always displays total cost and premium alongside every monthly figure.**
@@ -575,7 +575,13 @@ git commit -m "feat: token source of truth with CSS, Figma and app exports"
 
 **Interfaces:**
 - Consumes: `src/styles/tokens.css` from Task 2
-- Produces: Tailwind utilities `bg-forest`, `text-ink`, `bg-mist`, `bg-turmeric`, `font-heading`, `font-body`, `rounded-md`; `fontClassNames(locale: string): string`
+- Produces: Tailwind utilities `bg-forest`, `text-ink`, `bg-mist`, `bg-turmeric`, `font-heading`, `font-body`, `rounded-md`; `fontVariableNames(locale)` in `src/lib/fonts.ts` (pure) and `fontClassNames(locale)` in `src/lib/fonts.loaders.ts` (next/font)
+
+> **Deviation from plan as written, applied during execution:** the emitted CSS custom
+> properties are namespaced `--adhara-*` — `@theme inline { --color-forest: var(--color-forest) }`
+> is self-referential and resolves to nothing. And `next/font/google` is a build-time SWC
+> transform that throws under Vitest, so the pure locale policy lives in `fonts.ts` and the
+> loaders in `fonts.loaders.ts`.
 
 - [ ] **Step 1: Wire tokens into the Tailwind theme**
 

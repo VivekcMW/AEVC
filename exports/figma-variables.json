@@ -1,0 +1,209 @@
+{
+  "collections": [
+    {
+      "name": "Adhara Colour",
+      "modes": [
+        "Light"
+      ],
+      "variables": [
+        {
+          "name": "color.forest",
+          "type": "COLOR",
+          "valuesByMode": {
+            "Light": "#0E3B2E"
+          }
+        },
+        {
+          "name": "color.turmeric",
+          "type": "COLOR",
+          "valuesByMode": {
+            "Light": "#E8A020"
+          }
+        },
+        {
+          "name": "color.ink",
+          "type": "COLOR",
+          "valuesByMode": {
+            "Light": "#14201B"
+          }
+        },
+        {
+          "name": "color.mist",
+          "type": "COLOR",
+          "valuesByMode": {
+            "Light": "#F4F6F1"
+          }
+        },
+        {
+          "name": "color.surface",
+          "type": "COLOR",
+          "valuesByMode": {
+            "Light": "#FFFFFF"
+          }
+        },
+        {
+          "name": "color.charge.full",
+          "type": "COLOR",
+          "valuesByMode": {
+            "Light": "#2F9E6B"
+          }
+        },
+        {
+          "name": "color.charge.low",
+          "type": "COLOR",
+          "valuesByMode": {
+            "Light": "#E8A020"
+          }
+        },
+        {
+          "name": "color.charge.out",
+          "type": "COLOR",
+          "valuesByMode": {
+            "Light": "#C6453C"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Adhara Space",
+      "modes": [
+        "Default"
+      ],
+      "variables": [
+        {
+          "name": "space.1",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "0.25rem"
+          }
+        },
+        {
+          "name": "space.2",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "0.5rem"
+          }
+        },
+        {
+          "name": "space.3",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "0.75rem"
+          }
+        },
+        {
+          "name": "space.4",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "1rem"
+          }
+        },
+        {
+          "name": "space.5",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "1.5rem"
+          }
+        },
+        {
+          "name": "space.6",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "2rem"
+          }
+        },
+        {
+          "name": "space.7",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "3rem"
+          }
+        },
+        {
+          "name": "space.8",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "4rem"
+          }
+        },
+        {
+          "name": "space.9",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "6rem"
+          }
+        },
+        {
+          "name": "space.10",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "8rem"
+          }
+        },
+        {
+          "name": "space.11",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "10rem"
+          }
+        },
+        {
+          "name": "space.12",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "12rem"
+          }
+        },
+        {
+          "name": "radius.sm",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "0.25rem"
+          }
+        },
+        {
+          "name": "radius.md",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "0.5rem"
+          }
+        },
+        {
+          "name": "radius.lg",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "0.875rem"
+          }
+        },
+        {
+          "name": "radius.full",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "999px"
+          }
+        },
+        {
+          "name": "radius.pill",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "999px"
+          }
+        },
+        {
+          "name": "radius.xl",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "1.5rem"
+          }
+        },
+        {
+          "name": "radius.2xl",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "2rem"
+          }
+        }
+      ]
+    }
+  ]
+}
