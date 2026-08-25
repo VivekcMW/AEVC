@@ -1,0 +1,13 @@
+{
+  "families": {
+    "heading": "'Anek Latin', system-ui, sans-serif",
+    "body": "'Inter', system-ui, sans-serif",
+    "devanagari": "'Anek Devanagari', system-ui, sans-serif"
+  },
+  "scale": {
+    "xs": "0.8125rem", "sm": "0.9375rem", "base": "1rem", "lg": "1.125rem",
+    "xl": "1.375rem", "2xl": "1.75rem", "3xl": "2.25rem", "4xl": "3rem", "5xl": "3.75rem"
+  },
+  "weight": { "regular": "400", "medium": "500", "semibold": "600", "bold": "700" },
+  "leading": { "tight": "1.1", "snug": "1.3", "normal": "1.55" }
+}

@@ -1,0 +1,21 @@
+{
+  "$comment": "Source of truth. Hexes verbatim from proposal Section 2.3 — do not reinterpret.",
+  "base": {
+    "forest": { "value": "#0E3B2E", "role": "Headers, nav, secondary buttons, hero grounds" },
+    "turmeric": { "value": "#E8A020", "role": "One primary CTA per screen; never body text" },
+    "ink": { "value": "#14201B", "role": "All body copy" },
+    "mist": { "value": "#F4F6F1", "role": "Page background; white reserved for cards" },
+    "surface": { "value": "#FFFFFF", "role": "Cards only" }
+  },
+  "charge": {
+    "full": { "value": "#2F9E6B", "role": "On-track" },
+    "low": { "value": "#E8A020", "role": "Due soon" },
+    "out": { "value": "#C6453C", "role": "Lapsed or failed" }
+  },
+  "derive": {
+    "hover": -0.08,
+    "active": -0.14,
+    "border": 0.55,
+    "disabled": 0.72
+  }
+}

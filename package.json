@@ -9,7 +9,9 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "tokens:build": "tsx scripts/build-tokens.ts"
+    "tokens:build": "tsx scripts/build-tokens.ts",
+    "prebuild": "pnpm tokens:build",
+    "pretest": "pnpm tokens:build"
   },
   "dependencies": {
     "next": "16.3.2",
