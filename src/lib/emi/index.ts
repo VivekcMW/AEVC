@@ -1,0 +1,4 @@
+export { calculateEmi, eligibilityDate } from './calculate'
+export type { EmiInput, EmiResult } from './calculate'
+export { scheme } from './emi-scheme.placeholder'
+export type { Tenure } from './emi-scheme.placeholder'
