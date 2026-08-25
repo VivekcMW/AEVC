@@ -22,7 +22,7 @@ export function Wordmark({
       <span
         role="img"
         aria-label="Adhara Energy"
-        className={`inline-flex flex-col items-start leading-none ${className}`}
+        className={`inline-flex w-fit flex-col items-start leading-none ${className}`}
       >
         <span className="font-heading text-[1.45em] font-bold tracking-[0.01em]">Adhara</span>
         <span aria-hidden data-accent="true" className={`my-[0.22em] h-[0.11em] w-full ${beam}`} />
@@ -38,7 +38,7 @@ export function Wordmark({
       <span
         role="img"
         aria-label="Adhara Energy"
-        className={`inline-flex flex-col items-start leading-none ${className}`}
+        className={`inline-flex w-fit flex-col items-start leading-none ${className}`}
       >
         <span className="font-heading text-[1.2em] tracking-[-0.01em]">
           <span className="font-bold">Adhara</span>
@@ -55,7 +55,7 @@ export function Wordmark({
     <span
       role="img"
       aria-label="Adhara Energy"
-      className={`relative inline-block leading-none ${className}`}
+      className={`relative inline-block w-fit leading-none ${className}`}
     >
       <span className="font-heading text-[1.2em] tracking-[-0.01em]">
         <span className="font-bold">Adhara</span>
@@ -64,7 +64,7 @@ export function Wordmark({
       <span
         aria-hidden
         data-accent="true"
-        className={`absolute top-[0.52em] left-[0.06em] h-[0.1em] w-[0.62em] ${beam}`}
+        className={`absolute top-[0.5em] left-[0.05em] h-[0.13em] w-[0.66em] rounded-full ${beam}`}
       />
     </span>
   )
