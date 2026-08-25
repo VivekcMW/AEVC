@@ -51,7 +51,7 @@ export default async function ModelDetailPage({
 
   return (
     <>
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+      <div className="mx-auto max-w-7xl px-5 pt-32 sm:pt-36 pb-20 sm:px-8 lg:pb-28">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
           <ColourSwitcher
             colours={model.colours}
@@ -61,10 +61,10 @@ export default async function ModelDetailPage({
 
           <div className="flex flex-col gap-6">
             <div>
-              <h1 className="font-heading text-3xl font-bold tracking-[-0.02em] text-ink sm:text-4xl">
+              <h1 className="display text-display-sm text-ink">
                 {model.name}
               </h1>
-              <p className="mt-2 text-lg text-ink/70">{model.tagline}</p>
+              <p className="mt-3 text-xl text-ink/60">{model.tagline}</p>
             </div>
 
             {/* Dual pricing across every offered tenure — never a monthly figure alone. */}
@@ -103,7 +103,7 @@ export default async function ModelDetailPage({
 
           <div className="flex flex-col gap-8">
             <section>
-              <h2 className="font-heading text-xl font-semibold text-ink">
+              <h2 className="font-heading text-2xl font-semibold tracking-[-0.02em] text-ink">
                 {t('classificationTitle')}
               </h2>
               <span aria-hidden className="mt-3 block h-0.5 w-12 bg-turmeric" />
@@ -113,7 +113,7 @@ export default async function ModelDetailPage({
             </section>
 
             <section>
-              <h2 className="font-heading text-xl font-semibold text-ink">{t('faqTitle')}</h2>
+              <h2 className="font-heading text-2xl font-semibold tracking-[-0.02em] text-ink">{t('faqTitle')}</h2>
               <span aria-hidden className="mt-3 block h-0.5 w-12 bg-turmeric" />
               <div className="mt-4">
                 <Accordion items={faqs} />

@@ -7,16 +7,17 @@ export async function TrustBadges({ locale }: { locale: string }) {
   const t = await getTranslations({ locale, namespace: 'home' })
 
   return (
-    <section className="border-y border-forest/12 bg-surface">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
-        <h2 className="font-heading text-2xl font-semibold tracking-[-0.01em] text-ink sm:text-3xl">
-          {t('trustTitle')}
-        </h2>
+    <section className="border-t border-forest/12">
+      <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+        <h2 className="display max-w-2xl text-display-sm text-ink">{t('trustTitle')}</h2>
 
-        <ul className="mt-8 grid gap-6 sm:grid-cols-3">
-          {CLAIM_IDS.map((id) => (
-            <li key={id} className="flex flex-col gap-3 border-t-2 border-turmeric pt-4">
-              <Claim id={id} className="text-sm leading-relaxed text-ink/85" />
+        <ul className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-3">
+          {CLAIM_IDS.map((id, i) => (
+            <li key={id} className="flex flex-col gap-4 border-t border-forest/15 pt-5">
+              <span aria-hidden className="figure text-3xl text-forest/20">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <Claim id={id} className="text-lg leading-snug text-ink/85" />
             </li>
           ))}
         </ul>

@@ -8,18 +8,19 @@ type Variant = 'primary' | 'secondary' | 'ghost'
 type Size = 'md' | 'lg'
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors ' +
-  'disabled:cursor-not-allowed disabled:opacity-60'
+  'inline-flex items-center justify-center gap-2 rounded-pill font-medium ' +
+  'transition-[background-color,color,transform] duration-200 active:scale-[0.98] ' +
+  'disabled:cursor-not-allowed disabled:opacity-55 disabled:active:scale-100'
 
 const variants: Record<Variant, string> = {
   primary: 'bg-turmeric text-ink hover:bg-turmeric-hover',
   secondary: 'bg-forest text-white hover:bg-forest-hover',
-  ghost: 'bg-transparent text-forest underline underline-offset-4 hover:text-ink',
+  ghost: 'border border-current bg-transparent text-forest hover:bg-forest hover:text-white',
 }
 
 const sizes: Record<Size, string> = {
-  md: 'text-base px-5 py-2.5',
-  lg: 'text-lg px-7 py-3.5',
+  md: 'text-base px-6 py-3',
+  lg: 'text-lg px-8 py-4',
 }
 
 type ButtonProps = {

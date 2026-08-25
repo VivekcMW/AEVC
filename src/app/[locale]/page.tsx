@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { Button } from '@/components/ui/Button'
+import { Blueprint } from '@/components/blocks/Blueprint'
 import { EmiStrip } from '@/components/blocks/EmiStrip'
 import { Hero } from '@/components/blocks/Hero'
 import { ModelCard } from '@/components/blocks/ModelCard'
@@ -21,24 +23,22 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Hero locale={locale} models={models} />
       <EmiStrip locale={locale} />
 
-      <section className="border-t border-forest/12 bg-surface">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
-          <div className="flex flex-wrap items-end justify-between gap-4">
+      <section className="border-t border-forest/12">
+        <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-36">
+          <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <h2 className="font-heading text-2xl font-semibold tracking-[-0.01em] text-ink sm:text-3xl">
-                {t('modelsTitle')}
-              </h2>
-              <p className="mt-2 text-ink/70">{t('modelsBody')}</p>
+              <h2 className="display text-display-sm text-ink">{t('modelsTitle')}</h2>
+              <p className="mt-5 text-lg text-ink/65">{t('modelsBody')}</p>
             </div>
             <Link
               href={`/${locale}/vehicles`}
-              className="text-sm font-semibold text-forest underline decoration-forest/30 decoration-2 underline-offset-4 hover:decoration-turmeric"
+              className="rounded-pill border border-forest/25 px-5 py-2.5 text-sm font-medium text-forest transition-colors hover:bg-forest hover:text-white"
             >
               {tc('cta.seeAllModels')} →
             </Link>
           </div>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
             {models.map((model) => (
               <ModelCard key={model.slug} model={model} locale={locale} />
             ))}
@@ -46,21 +46,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
-      {/* Calculator teaser. The accent is spent on the hero, so this leads with a rule. */}
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
-        <div className="relative overflow-hidden rounded-lg border-l-4 border-turmeric bg-surface p-6 sm:p-10">
-          <div className="max-w-2xl">
-            <h2 className="font-heading text-2xl font-semibold tracking-[-0.01em] text-ink sm:text-3xl">
-              {t('calcTeaserTitle')}
-            </h2>
-            <p className="mt-3 text-ink/75">{t('calcTeaserBody')}</p>
-            <Link
-              href={`/${locale}/emi/calculator`}
-              className="mt-6 inline-flex items-center gap-2 rounded-md bg-forest px-5 py-2.5 font-medium text-white transition-colors hover:bg-forest-hover"
-            >
-              {tc('cta.calculate')}
-              <span aria-hidden>→</span>
-            </Link>
+      {/* Full-bleed Forest band. The accent is spent on the hero, so this leads on scale. */}
+      <section className="relative isolate overflow-hidden bg-forest text-white">
+        <Blueprint />
+        <div className="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-36">
+          <div className="max-w-3xl">
+            <h2 className="display text-display-sm">{t('calcTeaserTitle')}</h2>
+            <p className="mt-6 text-lg text-white/75 sm:text-xl">{t('calcTeaserBody')}</p>
+            <div className="mt-10">
+              <Button
+                variant="ghost"
+                size="lg"
+                href={`/${locale}/emi/calculator`}
+                className="!border-white/35 !text-white hover:!bg-white hover:!text-forest"
+              >
+                {tc('cta.calculate')} →
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -72,12 +74,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         approved: false, so nothing shows here today — see src/lib/legal/testimonials.ts.
       */}
       {testimonials.length > 0 && (
-        <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <ul className="grid gap-5 sm:grid-cols-3">
+        <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
+          <ul className="grid gap-10 sm:grid-cols-3">
             {testimonials.map((item) => (
-              <li key={item.id} className="rounded-lg border border-forest/12 bg-surface p-5">
-                <blockquote className="text-ink/85">“{item.quote}”</blockquote>
-                <p className="mt-3 text-sm text-ink/60">
+              <li key={item.id} className="border-t border-forest/15 pt-5">
+                <blockquote className="text-xl leading-snug text-ink/85">“{item.quote}”</blockquote>
+                <p className="mt-4 text-sm text-ink/55">
                   {item.name} · {item.city}
                 </p>
               </li>

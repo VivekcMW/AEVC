@@ -31,8 +31,8 @@ export default async function EmiPage({ params }: { params: Promise<{ locale: st
     <>
       <section className="relative overflow-hidden bg-forest text-white">
         <Blueprint />
-        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
-          <h1 className="max-w-2xl font-heading text-3xl font-bold tracking-[-0.02em] text-balance sm:text-4xl lg:text-5xl">
+        <div className="relative mx-auto max-w-7xl px-5 pt-36 pb-20 sm:px-8 lg:pt-44 lg:pb-28">
+          <h1 className="display max-w-[18ch] text-display-md">
             {t('title')}
           </h1>
           <span aria-hidden className="mt-6 block h-0.5 w-24 bg-turmeric" />
@@ -48,7 +48,7 @@ export default async function EmiPage({ params }: { params: Promise<{ locale: st
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:items-start">
           <div>
-            <h2 className="font-heading text-2xl font-semibold tracking-[-0.01em] text-ink sm:text-3xl">
+            <h2 className="display text-display-sm text-ink">
               {t('whyNoBank')}
             </h2>
             <span aria-hidden className="mt-4 block h-0.5 w-12 bg-turmeric" />
@@ -59,7 +59,7 @@ export default async function EmiPage({ params }: { params: Promise<{ locale: st
           </div>
 
           <div>
-            <h2 className="font-heading text-2xl font-semibold tracking-[-0.01em] text-ink sm:text-3xl">
+            <h2 className="display text-display-sm text-ink">
               {t('stepsTitle')}
             </h2>
             <span aria-hidden className="mt-4 block h-0.5 w-12 bg-turmeric" />

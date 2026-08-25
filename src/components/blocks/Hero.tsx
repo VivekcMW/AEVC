@@ -1,17 +1,18 @@
 import { getTranslations } from 'next-intl/server'
 import { Button } from '@/components/ui/Button'
 import { PriceDual } from '@/components/ui/PriceDual'
-import { formatRupees } from '@/lib/format'
 import { calculateEmi, scheme } from '@/lib/emi'
+import { formatRupees } from '@/lib/format'
 import type { VehicleModel } from '@/lib/data/types'
 import { Blueprint } from './Blueprint'
+import { CircledWord } from './CircledWord'
 import { VehicleGlyph } from './VehicleGlyph'
 
 const LONGEST_TENURE = scheme.tenures[scheme.tenures.length - 1]
+const TICKER = ['noBank', 'noCreditCheck', 'monthly', 'soh', 'delivery'] as const
 
 export async function Hero({ locale, models }: { locale: string; models: VehicleModel[] }) {
   const t = await getTranslations({ locale, namespace: 'home' })
-  const tc = await getTranslations({ locale, namespace: 'common' })
 
   // The headline number is the cheapest entry point across the range — the figure a
   // first-time buyer is actually deciding on.
@@ -19,70 +20,70 @@ export async function Hero({ locale, models }: { locale: string; models: Vehicle
   const entry = calculateEmi({ priceInr: cheapest.priceInr, tenureMonths: LONGEST_TENURE })
 
   return (
-    <section className="relative overflow-hidden bg-forest text-white">
+    <section className="relative isolate flex min-h-[88svh] flex-col overflow-hidden bg-forest text-white">
       <Blueprint />
 
-      <div className="relative mx-auto grid max-w-6xl gap-10 px-4 pt-12 pb-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-6 lg:pt-16 lg:pb-20">
-        <div className="flex flex-col items-start">
-          <p className="font-heading text-xs font-semibold tracking-[0.2em] text-turmeric uppercase">
-            {t('heroEyebrow')}
-          </p>
+      {/* The vehicle sits behind the type at scale, the way a photograph would. */}
+      <VehicleGlyph
+        colour="transparent"
+        label=""
+        className="pointer-events-none absolute right-0 bottom-[22%] h-[38%] w-[96%] text-white/[0.06] sm:w-[70%] lg:top-1/2 lg:right-[2%] lg:bottom-auto lg:h-[46%] lg:w-[46%] lg:-translate-y-[46%]"
+      />
 
-          <h1 className="mt-4 max-w-xl text-[2rem] leading-[1.08] font-bold tracking-[-0.02em] text-balance sm:text-[2.75rem] lg:text-[3.25rem]">
-            {t('heroTitle')}
-          </h1>
+      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-5 pt-28 pb-12 sm:px-8 lg:pt-32 lg:pb-16">
+        <p className="font-heading text-xs font-semibold tracking-[0.22em] text-turmeric uppercase">
+          {t('heroEyebrow')}
+        </p>
 
-          <span aria-hidden className="mt-6 block h-0.5 w-24 bg-turmeric" />
+        <h1 className="display mt-6 max-w-[17ch] text-display-md">
+          {t('heroTitleBefore')} <CircledWord>{t('heroTitleRinged')}</CircledWord>{' '}
+          {t('heroTitleAfter')}
+        </h1>
 
-          <p className="mt-6 max-w-md text-base text-white/80 sm:text-lg">{t('heroBody')}</p>
+        <div className="mt-9 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+          <p className="max-w-md text-lg text-white/75 sm:text-xl">{t('heroBody')}</p>
 
-          <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
-            <Button
-              variant="primary"
-              size="lg"
-              href={`/${locale}/emi/calculator`}
-              className="whitespace-nowrap"
-            >
-              {t('heroCta', { amount: formatRupees(entry.monthly) })}
-            </Button>
-            <Button variant="ghost" href={`/${locale}/vehicles`} className="whitespace-nowrap !text-white/85">
-              {t('heroSecondary')}
-            </Button>
-          </div>
-        </div>
-
-        {/* Technical illustration, not a photograph — see the design note in VehicleGlyph. */}
-        <div className="relative">
-          <div className="rounded-lg border border-white/12 bg-white/[0.03] p-5 backdrop-blur-[1px]">
-            <VehicleGlyph
-              colour={cheapest.colours[0].hex}
-              label={`${cheapest.name} technical illustration`}
-              className="h-44 w-full text-white sm:h-56"
+          <div className="flex flex-col items-start gap-5 lg:items-end">
+            <PriceDual
+              full={cheapest.priceInr}
+              monthly={entry.monthly}
+              tenure={entry.tenureMonths}
+              size="md"
+              tone="light"
             />
-            <dl className="tnum mt-4 grid grid-cols-2 gap-3 border-t border-white/12 pt-4 text-sm">
-              {[
-                { k: tc('spec.model'), v: cheapest.name },
-                { k: tc('spec.range'), v: `${cheapest.rangeKm} km` },
-              ].map((row) => (
-                <div key={row.k}>
-                  <dt className="text-[0.6875rem] tracking-wide text-white/50 uppercase">{row.k}</dt>
-                  <dd className="mt-0.5 font-medium text-white">{row.v}</dd>
-                </div>
-              ))}
-            </dl>
-
-            {/* The full price must sit with the monthly figure the CTA advertises. */}
-            <div className="mt-4 border-t border-white/12 pt-4">
-              <PriceDual
-                full={cheapest.priceInr}
-                monthly={entry.monthly}
-                tenure={entry.tenureMonths}
-                size="sm"
-                tone="light"
-              />
+            {/* Full-width taps on mobile; nowrap only where the line actually fits. */}
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+              <Button
+                variant="primary"
+                size="lg"
+                href={`/${locale}/emi/calculator`}
+                className="w-full text-center sm:w-auto sm:whitespace-nowrap"
+              >
+                {t('heroCta', { amount: formatRupees(entry.monthly) })}
+              </Button>
+              <Button
+                variant="ghost"
+                size="lg"
+                href={`/${locale}/vehicles`}
+                className="w-full text-center !border-white/35 !text-white hover:!bg-white hover:!text-forest sm:w-auto sm:whitespace-nowrap"
+              >
+                {t('heroSecondary')}
+              </Button>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Feature ticker. Carries the differentiators without another block of prose. */}
+      <div className="relative border-t border-white/12">
+        <ul className="mx-auto flex max-w-7xl gap-8 overflow-x-auto px-5 py-4 text-sm whitespace-nowrap text-white/70 sm:px-8 [&::-webkit-scrollbar]:hidden">
+          {TICKER.map((item) => (
+            <li key={item} className="flex shrink-0 items-center gap-2.5">
+              <span aria-hidden className="h-px w-5 bg-turmeric" />
+              {t(`ticker.${item}`)}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

@@ -141,6 +141,20 @@
           }
         },
         {
+          "name": "space.11",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "10rem"
+          }
+        },
+        {
+          "name": "space.12",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "12rem"
+          }
+        },
+        {
           "name": "radius.sm",
           "type": "FLOAT",
           "valuesByMode": {
@@ -166,6 +180,27 @@
           "type": "FLOAT",
           "valuesByMode": {
             "Default": "999px"
+          }
+        },
+        {
+          "name": "radius.pill",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "999px"
+          }
+        },
+        {
+          "name": "radius.xl",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "1.5rem"
+          }
+        },
+        {
+          "name": "radius.2xl",
+          "type": "FLOAT",
+          "valuesByMode": {
+            "Default": "2rem"
           }
         }
       ]

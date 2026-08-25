@@ -43,6 +43,42 @@
   --text-3xl: var(--adhara-text-3xl);
   --text-4xl: var(--adhara-text-4xl);
   --text-5xl: var(--adhara-text-5xl);
+  --text-6xl: var(--adhara-text-6xl);
+  --text-display-sm: var(--adhara-text-display-sm);
+  --text-display-md: var(--adhara-text-display-md);
+  --text-display-lg: var(--adhara-text-display-lg);
+
+  --radius-xl: var(--adhara-radius-xl);
+  --radius-2xl: var(--adhara-radius-2xl);
+  --radius-pill: var(--adhara-radius-pill);
+}
+
+/*
+ * Display type. Set at light-to-medium weight rather than bold: at this scale weight
+ * reads as shouting, while restraint reads as confidence — the lesson from the reference.
+ */
+.display {
+  font-family: var(--font-anek-latin), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+:lang(hi) .display {
+  font-family: var(--font-anek-devanagari), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.22;
+}
+
+/* Big figures — the numbers this category is actually decided on. */
+.figure {
+  font-family: var(--font-anek-latin), system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 body {
@@ -59,7 +95,7 @@ h3,
 h4 {
   font-family: var(--font-anek-latin), system-ui, sans-serif;
   line-height: var(--adhara-leading-tight);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 
 /* Hindi sets the whole page in the script-matched sibling face. */

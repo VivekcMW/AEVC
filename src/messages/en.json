@@ -67,7 +67,17 @@
     "modelsBody": "Every model is built to low-speed specification and carries the same battery-health warranty.",
     "calcTeaserTitle": "See your monthly number before you decide",
     "calcTeaserBody": "Pick a model and a tenure. We show the monthly amount, the total, and exactly what the scheme costs against paying in full.",
-    "trustTitle": "What we put in writing"
+    "trustTitle": "What we put in writing",
+    "heroTitleBefore": "The electric ride a bank",
+    "heroTitleRinged": "can't",
+    "heroTitleAfter": "say no to.",
+    "ticker": {
+      "noBank": "No bank",
+      "noCreditCheck": "No credit check",
+      "monthly": "Fixed monthly payment",
+      "soh": "3-year battery health warranty",
+      "delivery": "Home delivery"
+    }
   },
   "vehicles": {
     "title": "Vehicles",

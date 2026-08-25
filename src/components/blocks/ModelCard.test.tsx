@@ -27,8 +27,14 @@ describe('ModelCard', () => {
 
   it('states range and top speed, the two specs that decide the category', () => {
     renderIntl(<ModelCard model={models[0]} />)
-    expect(screen.getByText(/65/)).toBeDefined()
-    expect(screen.getByText(/25/)).toBeDefined()
+    expect(screen.getByText('65')).toBeDefined()
+    expect(screen.getByText('25')).toBeDefined()
+    expect(screen.getByText('km/h')).toBeDefined()
+  })
+
+  it('exposes exactly one link, so the model name is announced once', () => {
+    renderIntl(<ModelCard model={models[0]} />)
+    expect(screen.getAllByRole('link')).toHaveLength(1)
   })
 
   it('uses no primary CTA, because a card is never the page CTA', () => {

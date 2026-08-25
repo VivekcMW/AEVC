@@ -44,10 +44,15 @@
   --adhara-text-3xl: 2.25rem;
   --adhara-text-4xl: 3rem;
   --adhara-text-5xl: 3.75rem;
+  --adhara-text-6xl: 4.5rem;
+  --adhara-text-display-sm: clamp(2.25rem, 7vw, 3.5rem);
+  --adhara-text-display-md: clamp(2.75rem, 9vw, 5rem);
+  --adhara-text-display-lg: clamp(3rem, 11vw, 7rem);
   --adhara-weight-regular: 400;
   --adhara-weight-medium: 500;
   --adhara-weight-semibold: 600;
   --adhara-weight-bold: 700;
+  --adhara-weight-light: 300;
   --adhara-leading-tight: 1.1;
   --adhara-leading-snug: 1.3;
   --adhara-leading-normal: 1.55;
@@ -61,8 +66,13 @@
   --adhara-space-8: 4rem;
   --adhara-space-9: 6rem;
   --adhara-space-10: 8rem;
+  --adhara-space-11: 10rem;
+  --adhara-space-12: 12rem;
   --adhara-radius-sm: 0.25rem;
   --adhara-radius-md: 0.5rem;
   --adhara-radius-lg: 0.875rem;
   --adhara-radius-full: 999px;
+  --adhara-radius-pill: 999px;
+  --adhara-radius-xl: 1.5rem;
+  --adhara-radius-2xl: 2rem;
 }
