@@ -25,7 +25,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
       </a>
 
       <div className="mx-auto max-w-7xl">
-        <div className="flex items-center gap-4 rounded-pill border border-white/12 bg-forest/85 px-4 py-2.5 text-white shadow-[0_8px_30px_-12px_rgb(20_32_27_/_0.45)] backdrop-blur-xl sm:px-6 sm:py-3">
+        <div className="header-shell flex items-center gap-4 rounded-pill border border-white/12 bg-forest/85 px-4 py-2.5 text-white shadow-[0_8px_30px_-12px_rgb(20_32_27_/_0.45)] backdrop-blur-xl sm:px-6 sm:py-3">
           <Link href={`/${locale}`} className="shrink-0 text-white">
             <Wordmark variant="crossbar" className="text-base sm:text-lg" />
           </Link>
@@ -35,7 +35,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-white/80 underline-offset-8 transition-colors hover:text-white hover:underline hover:decoration-turmeric hover:decoration-2"
+                className="link-grow py-0.5 text-white/80 transition-colors hover:text-white"
               >
                 {item.label}
               </Link>

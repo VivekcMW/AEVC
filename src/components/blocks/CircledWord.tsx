@@ -14,17 +14,23 @@ export function CircledWord({ children }: { children: React.ReactNode }) {
         aria-hidden
         viewBox="0 0 200 90"
         preserveAspectRatio="none"
-        className="absolute -inset-x-[0.18em] -inset-y-[0.12em] h-[calc(100%+0.24em)] w-[calc(100%+0.36em)]"
+        className="ring-draw absolute -inset-x-[0.18em] -inset-y-[0.12em] h-[calc(100%+0.24em)] w-[calc(100%+0.36em)]"
       >
+        {/*
+          pathLength normalises the perimeter to 100 so the dash animation in motion.css
+          needs no knowledge of this rect's actual dimensions.
+        */}
         <rect
           x="2"
           y="2"
           width="196"
           height="86"
           rx="43"
+          pathLength="100"
           fill="none"
           stroke="var(--adhara-color-turmeric)"
           strokeWidth="3"
+          strokeLinecap="round"
           vectorEffect="non-scaling-stroke"
         />
       </svg>

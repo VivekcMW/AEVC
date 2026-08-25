@@ -35,7 +35,7 @@ export default async function EmiPage({ params }: { params: Promise<{ locale: st
           <h1 className="display max-w-[18ch] text-display-md">
             {t('title')}
           </h1>
-          <span aria-hidden className="mt-6 block h-0.5 w-24 bg-turmeric" />
+          <span aria-hidden className="beam-lay mt-6 block h-0.5 w-24 bg-turmeric" />
           <p className="mt-6 max-w-xl text-lg text-white/80">{t('subtitle')}</p>
           <div className="mt-8">
             <Button variant="primary" size="lg" href={`/${locale}/emi/calculator`}>
@@ -51,7 +51,7 @@ export default async function EmiPage({ params }: { params: Promise<{ locale: st
             <h2 className="display text-display-sm text-ink">
               {t('whyNoBank')}
             </h2>
-            <span aria-hidden className="mt-4 block h-0.5 w-12 bg-turmeric" />
+            <span aria-hidden className="reveal-beam mt-4 block h-0.5 w-12 bg-turmeric" />
             <p className="mt-5 text-ink/80">{t('whyNoBankBody')}</p>
             <p className="mt-5 rounded-lg border-l-4 border-turmeric bg-surface p-4 text-sm text-ink/85">
               <Claim id="no-credit-check" />
@@ -62,7 +62,7 @@ export default async function EmiPage({ params }: { params: Promise<{ locale: st
             <h2 className="display text-display-sm text-ink">
               {t('stepsTitle')}
             </h2>
-            <span aria-hidden className="mt-4 block h-0.5 w-12 bg-turmeric" />
+            <span aria-hidden className="reveal-beam mt-4 block h-0.5 w-12 bg-turmeric" />
             <ol className="mt-5 flex flex-col gap-px overflow-hidden rounded-lg border border-forest/12 bg-forest/12">
               {STEPS.map((step, i) => (
                 <li key={step} className="flex gap-4 bg-surface p-5">

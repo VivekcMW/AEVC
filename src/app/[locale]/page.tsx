@@ -38,7 +38,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             </Link>
           </div>
 
-          <div className="mt-16 grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="reveal-stagger mt-16 grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
             {models.map((model) => (
               <ModelCard key={model.slug} model={model} locale={locale} />
             ))}
@@ -50,7 +50,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section className="relative isolate overflow-hidden bg-forest text-white">
         <Blueprint />
         <div className="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-36">
-          <div className="max-w-3xl">
+          <div className="reveal max-w-3xl">
             <h2 className="display text-display-sm">{t('calcTeaserTitle')}</h2>
             <p className="mt-6 text-lg text-white/75 sm:text-xl">{t('calcTeaserBody')}</p>
             <div className="mt-10">

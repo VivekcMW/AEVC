@@ -17,7 +17,7 @@ export function ModelCard({ model, locale = 'en' }: { model: VehicleModel; local
      * One link per card, stretched over the whole surface. Three separate links to the
      * same destination made the card clickable but announced the model name three times.
      */
-    <article className="group relative flex flex-col">
+    <article className="lift group relative flex flex-col">
       <div className="overflow-hidden rounded-2xl bg-forest/[0.045] px-6 py-10 transition-colors group-hover:bg-forest/[0.08]">
         <VehicleGlyph
           colour={model.colours[0].hex}
@@ -37,7 +37,7 @@ export function ModelCard({ model, locale = 'en' }: { model: VehicleModel; local
         </h3>
         <p className="mt-1.5 text-ink/60">{model.tagline}</p>
 
-        <dl className="mt-6 grid grid-cols-3 gap-4 border-t border-forest/15 pt-5">
+        <dl className="beam-rule mt-6 grid grid-cols-3 gap-4 border-t border-forest/15 pt-5">
           {[
             { label: t('spec.range'), value: model.rangeKm, unit: 'km' },
             { label: t('spec.topSpeed'), value: model.topSpeedKmph, unit: 'km/h' },

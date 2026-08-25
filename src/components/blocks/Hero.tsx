@@ -31,19 +31,22 @@ export async function Hero({ locale, models }: { locale: string; models: Vehicle
       />
 
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-5 pt-28 pb-12 sm:px-8 lg:pt-32 lg:pb-16">
-        <p className="font-heading text-xs font-semibold tracking-[0.22em] text-turmeric uppercase">
-          {t('heroEyebrow')}
+        <p className="enter-stagger font-heading text-xs font-semibold tracking-[0.22em] text-turmeric uppercase">
+          <span className="inline-block">{t('heroEyebrow')}</span>
         </p>
 
-        <h1 className="display mt-6 max-w-[17ch] text-display-md">
+        {/* Transform only, no fade: this is the LCP candidate and must paint immediately. */}
+        <h1 className="display enter-rise mt-6 max-w-[17ch] text-display-md">
           {t('heroTitleBefore')} <CircledWord>{t('heroTitleRinged')}</CircledWord>{' '}
           {t('heroTitleAfter')}
         </h1>
 
         <div className="mt-9 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
-          <p className="max-w-md text-lg text-white/75 sm:text-xl">{t('heroBody')}</p>
+          <p className="enter-stagger enter-delay-1 max-w-md text-lg text-white/75 sm:text-xl">
+            <span className="inline-block">{t('heroBody')}</span>
+          </p>
 
-          <div className="flex flex-col items-start gap-5 lg:items-end">
+          <div className="enter-stagger enter-delay-2 flex flex-col items-start gap-5 lg:items-end">
             <PriceDual
               full={cheapest.priceInr}
               monthly={entry.monthly}
@@ -75,11 +78,11 @@ export async function Hero({ locale, models }: { locale: string; models: Vehicle
       </div>
 
       {/* Feature ticker. Carries the differentiators without another block of prose. */}
-      <div className="relative border-t border-white/12">
+      <div className="enter-stagger enter-delay-3 relative border-t border-white/12">
         <ul className="mx-auto flex max-w-7xl gap-8 overflow-x-auto px-5 py-4 text-sm whitespace-nowrap text-white/70 sm:px-8 [&::-webkit-scrollbar]:hidden">
           {TICKER.map((item) => (
             <li key={item} className="flex shrink-0 items-center gap-2.5">
-              <span aria-hidden className="h-px w-5 bg-turmeric" />
+              <span aria-hidden className="beam-lay h-px w-5 bg-turmeric" />
               {t(`ticker.${item}`)}
             </li>
           ))}

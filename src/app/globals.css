@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '../styles/tokens.css';
+@import '../styles/motion.css';
 
 /*
  * Maps the generated --adhara-* tokens into Tailwind's theme namespace.
@@ -133,13 +134,4 @@ h4 {
   outline: 3px solid var(--adhara-color-turmeric);
   outline-offset: 2px;
   border-radius: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
 }

@@ -13,9 +13,9 @@ export async function EmiStrip({ locale }: { locale: string }) {
       </div>
 
       {/* No cards: a hairline grid and very large numerals carry the structure instead. */}
-      <ol className="mt-16 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+      <ol className="reveal-stagger mt-16 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
         {STEPS.map((step, i) => (
-          <li key={step} className="flex flex-col border-t border-forest/15 pt-5">
+          <li key={step} className="beam-rule flex flex-col border-t border-forest/15 pt-5">
             <span aria-hidden className="figure text-5xl text-forest/20 sm:text-6xl">
               {String(i + 1).padStart(2, '0')}
             </span>

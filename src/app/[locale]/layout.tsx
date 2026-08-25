@@ -4,6 +4,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { SiteFooter } from '@/components/blocks/SiteFooter'
+import { RouteTransition } from '@/components/blocks/RouteTransition'
 import { SiteHeader } from '@/components/blocks/SiteHeader'
 import { fontClassNames } from '@/lib/fonts.loaders'
 import '../globals.css'
@@ -42,7 +43,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <SiteHeader locale={locale} />
           <main id="main" className="flex-1">
-            {children}
+            <RouteTransition>{children}</RouteTransition>
           </main>
           <SiteFooter locale={locale} />
         </NextIntlClientProvider>

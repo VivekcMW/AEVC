@@ -106,7 +106,7 @@ export default async function ModelDetailPage({
               <h2 className="font-heading text-2xl font-semibold tracking-[-0.02em] text-ink">
                 {t('classificationTitle')}
               </h2>
-              <span aria-hidden className="mt-3 block h-0.5 w-12 bg-turmeric" />
+              <span aria-hidden className="reveal-beam mt-3 block h-0.5 w-12 bg-turmeric" />
               <p className="mt-4 rounded-lg border border-forest/12 bg-surface p-5 text-sm leading-relaxed text-ink/85">
                 <Claim id="no-registration" />
               </p>
@@ -114,7 +114,7 @@ export default async function ModelDetailPage({
 
             <section>
               <h2 className="font-heading text-2xl font-semibold tracking-[-0.02em] text-ink">{t('faqTitle')}</h2>
-              <span aria-hidden className="mt-3 block h-0.5 w-12 bg-turmeric" />
+              <span aria-hidden className="reveal-beam mt-3 block h-0.5 w-12 bg-turmeric" />
               <div className="mt-4">
                 <Accordion items={faqs} />
               </div>

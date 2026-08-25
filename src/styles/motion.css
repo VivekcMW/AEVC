@@ -1,0 +1,321 @@
+/*
+ * Motion layer.
+ *
+ * Concept: the brand means foundation, so things are *built* rather than faded in.
+ * Beams scale from their left edge as if being laid; the headline ring draws itself;
+ * sections rise into place. Nothing drifts, floats or bounces.
+ *
+ * Three rules this file obeys:
+ *
+ * 1. The LCP element is never faded. Starting the largest headline at opacity 0 delays
+ *    its paint and eats into the 2.5s LCP budget, so `.enter-rise` moves without fading.
+ * 2. Every reveal is additive. Elements are fully visible with no CSS applied, and only
+ *    animate where `animation-timeline` is supported — an unsupported browser shows
+ *    content, never a blank page waiting for a scroll event.
+ * 3. Reduced motion sets `animation-timeline: none`, not just a short duration. A
+ *    scroll-driven animation ignores duration entirely, so the usual blanket
+ *    `animation-duration: 0.01ms` reset would leave these running.
+ */
+
+:root {
+  /* Allows details/summary to interpolate between 0 and auto height. */
+  interpolate-size: allow-keywords;
+
+  --ease-rise: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-beam: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-quick: 200ms;
+  --dur-rise: 620ms;
+  --dur-beam: 520ms;
+  --dur-draw: 760ms;
+}
+
+/* ─────────────────────────────  keyframes  ───────────────────────────── */
+
+/* Movement only — used on the LCP headline. */
+@keyframes enter-rise {
+  from {
+    transform: translate3d(0, 0.42em, 0);
+  }
+}
+
+/* Movement plus fade — everything that is not the LCP candidate. */
+@keyframes enter-fade-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1.1rem, 0);
+  }
+}
+
+/* A beam being laid: grows from its own left edge, never from the centre. */
+@keyframes beam-lay {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* The ring around the headline word, drawn as one continuous stroke. */
+@keyframes ring-draw {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 2rem, 0);
+  }
+}
+
+@keyframes header-condense {
+  to {
+    background-color: color-mix(in oklab, var(--adhara-color-forest) 94%, black);
+    box-shadow: 0 10px 34px -14px rgb(20 32 27 / 0.6);
+  }
+}
+
+@keyframes route-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.75rem, 0);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+/* ───────────────────  on-load entrance (hero only)  ─────────────────── */
+
+@media (prefers-reduced-motion: no-preference) {
+  /*
+   * The hero orchestration. One staggered sequence on load is worth more than a dozen
+   * scattered micro-interactions, so this is where the budget goes.
+   */
+  .enter-rise {
+    animation: enter-rise var(--dur-rise) var(--ease-rise) backwards;
+  }
+
+  .enter-stagger > * {
+    animation: enter-fade-rise var(--dur-rise) var(--ease-rise) backwards;
+  }
+
+  .enter-stagger > *:nth-child(1) {
+    animation-delay: 60ms;
+  }
+  .enter-stagger > *:nth-child(2) {
+    animation-delay: 140ms;
+  }
+  .enter-stagger > *:nth-child(3) {
+    animation-delay: 220ms;
+  }
+  .enter-stagger > *:nth-child(4) {
+    animation-delay: 300ms;
+  }
+
+  .enter-delay-1 {
+    animation-delay: 180ms;
+  }
+  .enter-delay-2 {
+    animation-delay: 300ms;
+  }
+  .enter-delay-3 {
+    animation-delay: 420ms;
+  }
+
+  /* Beams lay themselves down after the type has settled. */
+  .beam-lay {
+    transform-origin: left center;
+    animation: beam-lay var(--dur-beam) var(--ease-beam) 260ms backwards;
+  }
+
+  .ring-draw path,
+  .ring-draw rect {
+    stroke-dasharray: 100;
+    animation: ring-draw var(--dur-draw) var(--ease-beam) 520ms backwards;
+  }
+}
+
+/* ─────────────────  scroll-driven reveals (progressive)  ───────────── */
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 20%;
+    }
+
+    /* Children rise in sequence as the block enters. */
+    .reveal-stagger > * {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+    }
+    .reveal-stagger > *:nth-child(1) {
+      animation-range: entry 2% cover 16%;
+    }
+    .reveal-stagger > *:nth-child(2) {
+      animation-range: entry 6% cover 20%;
+    }
+    .reveal-stagger > *:nth-child(3) {
+      animation-range: entry 10% cover 24%;
+    }
+    .reveal-stagger > *:nth-child(4) {
+      animation-range: entry 14% cover 28%;
+    }
+
+    .reveal-beam {
+      transform-origin: left center;
+      animation: beam-lay linear both;
+      animation-timeline: view();
+      animation-range: entry 6% cover 22%;
+    }
+
+    /* The header gains weight as the page scrolls under it. */
+    .header-shell {
+      animation: header-condense linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 140px;
+    }
+  }
+}
+
+/*
+ * A hairline rule that gets a Turmeric segment laid across it as the element enters.
+ * Lets the numbered lists keep their quiet borders while still carrying the beam idea.
+ */
+.beam-rule {
+  position: relative;
+  /*
+   * Named timeline declared on the parent, not on the pseudo-element. A bare
+   * `animation-timeline: view()` on the ::before never activates: the pseudo is a 2px
+   * absolutely-positioned box, and its own view timeline stays inactive, which pins the
+   * animation at its start state forever. Driving it from this element's real box works.
+   */
+  view-timeline-name: --beam-rule;
+}
+
+.beam-rule::before {
+  content: '';
+  position: absolute;
+  inset-block-start: -1px;
+  inset-inline-start: 0;
+  block-size: 2px;
+  inline-size: 2.25rem;
+  background: var(--adhara-color-turmeric);
+  transform-origin: left center;
+  /*
+   * Visible by default, deliberately. The animation's `from` state supplies scaleX(0), so
+   * the mark grows in where motion runs and is simply present where it does not — no
+   * @supports fallback needed, and no way for a stalled timeline to hide it.
+   */
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .beam-rule::before {
+      animation: beam-lay linear both;
+      animation-timeline: --beam-rule;
+      animation-range: entry 10% cover 30%;
+    }
+  }
+}
+
+/* ───────────────────────  micro-interactions  ───────────────────────── */
+
+/* Cards lift on hover, and the whole card responds — not just the link inside it. */
+.lift {
+  transition:
+    transform var(--dur-quick) var(--ease-rise),
+    box-shadow var(--dur-quick) var(--ease-rise);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .lift:hover {
+    transform: translate3d(0, -4px, 0);
+    box-shadow: 0 18px 40px -24px rgb(20 32 27 / 0.35);
+  }
+}
+
+/* Underlines grow from the left rather than appearing whole. */
+.link-grow {
+  background-image: linear-gradient(var(--adhara-color-turmeric), var(--adhara-color-turmeric));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size var(--dur-quick) var(--ease-beam);
+}
+
+.link-grow:hover,
+.link-grow:focus-visible {
+  background-size: 100% 2px;
+}
+
+/* Native disclosure animation, where the browser supports it. */
+@supports selector(::details-content) {
+  @media (prefers-reduced-motion: no-preference) {
+    details::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition:
+        block-size 300ms var(--ease-rise),
+        content-visibility 300ms allow-discrete;
+    }
+
+    details[open]::details-content {
+      block-size: auto;
+    }
+  }
+}
+
+/*
+ * Between-route transition. Short on purpose: a page change should feel immediate, and
+ * anything above ~250ms starts to feel like latency the site has invented.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .route-enter {
+    animation: route-enter 240ms var(--ease-rise) both;
+  }
+}
+
+/* Route-level skeletons. */
+.skeleton {
+  background-image: linear-gradient(
+    100deg,
+    color-mix(in oklab, var(--adhara-color-forest) 6%, transparent) 30%,
+    color-mix(in oklab, var(--adhara-color-forest) 12%, transparent) 50%,
+    color-mix(in oklab, var(--adhara-color-forest) 6%, transparent) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* ────────────────────────  reduced motion  ──────────────────────────── */
+
+/*
+ * The critical line is `animation-timeline: none`. A scroll-driven animation derives its
+ * progress from scroll position, not from time, so zeroing the duration leaves it running.
+ * Without this, every reveal above would ignore the user's stated preference.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-timeline: none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skeleton {
+    animation: none !important;
+    background-image: none;
+    background-color: color-mix(in oklab, var(--adhara-color-forest) 8%, transparent);
+  }
+}

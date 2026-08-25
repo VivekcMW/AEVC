@@ -44,7 +44,7 @@ export default async function VehiclesPage({
         <h1 className="display text-display-sm text-ink">
           {t('title')}
         </h1>
-        <span aria-hidden className="mt-4 block h-0.5 w-16 bg-turmeric" />
+        <span aria-hidden className="beam-lay mt-4 block h-0.5 w-16 bg-turmeric" />
         <p className="mt-4 text-ink/75">{t('intro')}</p>
       </header>
 
