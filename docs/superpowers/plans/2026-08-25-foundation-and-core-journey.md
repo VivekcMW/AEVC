@@ -575,7 +575,13 @@ git commit -m "feat: token source of truth with CSS, Figma and app exports"
 
 **Interfaces:**
 - Consumes: `src/styles/tokens.css` from Task 2
-- Produces: Tailwind utilities `bg-forest`, `text-ink`, `bg-mist`, `bg-turmeric`, `font-heading`, `font-body`, `rounded-md`; `fontClassNames(locale: string): string`
+- Produces: Tailwind utilities `bg-forest`, `text-ink`, `bg-mist`, `bg-turmeric`, `font-heading`, `font-body`, `rounded-md`; `fontVariableNames(locale)` in `src/lib/fonts.ts` (pure) and `fontClassNames(locale)` in `src/lib/fonts.loaders.ts` (next/font)
+
+> **Deviation from plan as written, applied during execution:** the emitted CSS custom
+> properties are namespaced `--adhara-*` — `@theme inline { --color-forest: var(--color-forest) }`
+> is self-referential and resolves to nothing. And `next/font/google` is a build-time SWC
+> transform that throws under Vitest, so the pure locale policy lives in `fonts.ts` and the
+> loaders in `fonts.loaders.ts`.
 
 - [ ] **Step 1: Wire tokens into the Tailwind theme**
 

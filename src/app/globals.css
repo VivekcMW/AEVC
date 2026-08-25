@@ -1,26 +1,94 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import '../styles/tokens.css';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/*
+ * Maps the generated --adhara-* tokens into Tailwind's theme namespace.
+ * Font families are the exception: next/font self-hosts each face under a
+ * generated family name, so the web stack references its CSS variable while
+ * tokens/type.json keeps the real family names for the app and Figma exports.
+ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-forest: var(--adhara-color-forest);
+  --color-forest-hover: var(--adhara-color-forest-hover);
+  --color-forest-active: var(--adhara-color-forest-active);
+  --color-forest-border: var(--adhara-color-forest-border);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-turmeric: var(--adhara-color-turmeric);
+  --color-turmeric-hover: var(--adhara-color-turmeric-hover);
+  --color-turmeric-active: var(--adhara-color-turmeric-active);
+  --color-turmeric-disabled: var(--adhara-color-turmeric-disabled);
+
+  --color-ink: var(--adhara-color-ink);
+  --color-mist: var(--adhara-color-mist);
+  --color-surface: var(--adhara-color-surface);
+
+  --color-charge-full: var(--adhara-color-charge-full);
+  --color-charge-low: var(--adhara-color-charge-low);
+  --color-charge-out: var(--adhara-color-charge-out);
+
+  --font-heading: var(--font-anek-latin), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-devanagari: var(--font-anek-devanagari), system-ui, sans-serif;
+
+  --radius-sm: var(--adhara-radius-sm);
+  --radius-md: var(--adhara-radius-md);
+  --radius-lg: var(--adhara-radius-lg);
+
+  --text-xs: var(--adhara-text-xs);
+  --text-sm: var(--adhara-text-sm);
+  --text-base: var(--adhara-text-base);
+  --text-lg: var(--adhara-text-lg);
+  --text-xl: var(--adhara-text-xl);
+  --text-2xl: var(--adhara-text-2xl);
+  --text-3xl: var(--adhara-text-3xl);
+  --text-4xl: var(--adhara-text-4xl);
+  --text-5xl: var(--adhara-text-5xl);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--adhara-color-mist);
+  color: var(--adhara-color-ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: var(--adhara-leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-anek-latin), system-ui, sans-serif;
+  line-height: var(--adhara-leading-tight);
+  letter-spacing: -0.015em;
+}
+
+/* Hindi sets the whole page in the script-matched sibling face. */
+:lang(hi) body,
+:lang(hi) h1,
+:lang(hi) h2,
+:lang(hi) h3,
+:lang(hi) h4 {
+  font-family: var(--font-anek-devanagari), system-ui, sans-serif;
+  letter-spacing: normal;
+}
+
+/* Every rupee figure aligns in a column. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+:where(a, button, input, select, textarea, summary, details):focus-visible {
+  outline: 3px solid var(--adhara-color-turmeric);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

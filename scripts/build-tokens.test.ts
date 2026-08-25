@@ -6,28 +6,28 @@ const { css, figma, app } = buildTokens()
 
 describe('buildTokens css output', () => {
   it('emits the base palette verbatim', () => {
-    expect(css).toContain('--color-forest: #0E3B2E;')
-    expect(css).toContain('--color-turmeric: #E8A020;')
-    expect(css).toContain('--color-ink: #14201B;')
-    expect(css).toContain('--color-mist: #F4F6F1;')
+    expect(css).toContain('--adhara-color-forest: #0E3B2E;')
+    expect(css).toContain('--adhara-color-turmeric: #E8A020;')
+    expect(css).toContain('--adhara-color-ink: #14201B;')
+    expect(css).toContain('--adhara-color-mist: #F4F6F1;')
   })
 
   it('emits all three charge states', () => {
-    expect(css).toContain('--color-charge-full: #2F9E6B;')
-    expect(css).toContain('--color-charge-low: #E8A020;')
-    expect(css).toContain('--color-charge-out: #C6453C;')
+    expect(css).toContain('--adhara-color-charge-full: #2F9E6B;')
+    expect(css).toContain('--adhara-color-charge-low: #E8A020;')
+    expect(css).toContain('--adhara-color-charge-out: #C6453C;')
   })
 
   it('emits derived interaction variants rather than hand-authored ones', () => {
-    expect(css).toContain('--color-forest-hover:')
-    expect(css).toContain('--color-turmeric-hover:')
-    expect(css).toContain('--color-turmeric-disabled:')
+    expect(css).toContain('--adhara-color-forest-hover:')
+    expect(css).toContain('--adhara-color-turmeric-hover:')
+    expect(css).toContain('--adhara-color-turmeric-disabled:')
   })
 
   it('emits spacing, radius and font families', () => {
-    expect(css).toContain('--space-4: 1rem;')
-    expect(css).toContain('--radius-md: 0.5rem;')
-    expect(css).toContain('--font-heading:')
+    expect(css).toContain('--adhara-space-4: 1rem;')
+    expect(css).toContain('--adhara-radius-md: 0.5rem;')
+    expect(css).toContain('--adhara-font-heading:')
   })
 })
 
