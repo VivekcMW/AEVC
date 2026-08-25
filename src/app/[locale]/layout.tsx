@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
+import { SiteFooter } from '@/components/blocks/SiteFooter'
+import { SiteHeader } from '@/components/blocks/SiteHeader'
 import { fontClassNames } from '@/lib/fonts.loaders'
 import '../globals.css'
 
@@ -37,7 +39,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={fontClassNames(locale)}>
       <body className="flex min-h-dvh flex-col">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <SiteHeader locale={locale} />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <SiteFooter locale={locale} />
+        </NextIntlClientProvider>
       </body>
     </html>
   )
