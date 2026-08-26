@@ -18,9 +18,9 @@ export function AdharaMark({
         strokeWidth="15"
         strokeLinecap="round"
         strokeDasharray="127.06 48.87"
-        strokeDashoffset="24.44"
+        strokeDashoffset="118"
       />
-      <path d="M90 68 Q72 86 52 74" stroke="currentColor" strokeWidth="13" strokeLinecap="round" />
+      <path d="M78 42 H108" stroke="currentColor" strokeWidth="13" strokeLinecap="round" />
     </svg>
   )
 }
