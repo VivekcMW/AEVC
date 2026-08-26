@@ -15,8 +15,9 @@ export function VehicleGlyph({
   return (
     <svg
       viewBox="0 0 240 132"
-      role="img"
-      aria-label={label}
+      // An empty label with role="img" is invalid — a purely decorative instance
+      // (the Hero background silhouette) passes label="" and must read as decoration.
+      {...(label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true })}
       className={className}
       preserveAspectRatio="xMidYMid meet"
     >
@@ -26,7 +27,8 @@ export function VehicleGlyph({
       <circle cx="52" cy="96" r="8" fill="currentColor" opacity="0.25" />
       <circle cx="188" cy="96" r="8" fill="currentColor" opacity="0.25" />
 
-      {/* body — the one element carrying the model colour */}
+      {/* body — the one element carrying the model colour. Fill transitions on change;
+          the sitewide reduced-motion reset in motion.css already neutralises this when asked. */}
       <path
         d="M64 92 L84 58 L134 56 L150 40 L176 40 L186 62 L176 92 Z"
         fill={colour}
@@ -34,6 +36,7 @@ export function VehicleGlyph({
         strokeWidth="1.5"
         strokeLinejoin="round"
         opacity="0.92"
+        className="[transition:fill_450ms_var(--ease-rise)]"
       />
       {/* seat + handlebar */}
       <path d="M132 56 L166 54" stroke="currentColor" strokeWidth="6" strokeLinecap="round" opacity="0.55" />

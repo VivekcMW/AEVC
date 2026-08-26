@@ -9,7 +9,7 @@ export function SpecTable({ specs, title }: { specs: Spec[]; title: string }) {
       <dl className="tnum mt-6 divide-y divide-forest/12">
         {specs.map((spec) => (
           <div key={spec.label} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4">
-            <dt className="text-sm text-ink/55">{spec.label}</dt>
+            <dt className="text-sm text-ink/70">{spec.label}</dt>
             <dd className="text-lg font-medium text-ink">{spec.value}</dd>
           </div>
         ))}

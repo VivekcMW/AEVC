@@ -26,6 +26,8 @@ export type Dealer = {
   pincode: string
   phone: string
   offersTestRide: boolean
+  lat: number
+  lng: number
 }
 
 export type Faq = { id: string; category: string; question: string; answer: string }

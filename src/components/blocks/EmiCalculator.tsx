@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Field } from '@/components/ui/Field'
+import { RollingNumber } from '@/components/ui/RollingNumber'
 import type { VehicleModel } from '@/lib/data/types'
 import { calculateEmi, scheme } from '@/lib/emi'
 import { formatRupees } from '@/lib/format'
@@ -63,15 +64,15 @@ export function EmiCalculator({
 
         <dl className="tnum flex flex-wrap gap-x-8 gap-y-2 border-t border-forest/10 pt-4 text-sm">
           <div>
-            <dt className="text-ink/55">{tc('range')}</dt>
+            <dt className="text-ink/70">{tc('range')}</dt>
             <dd className="font-medium text-ink">{model.rangeKm} km</dd>
           </div>
           <div>
-            <dt className="text-ink/55">{tc('battery')}</dt>
+            <dt className="text-ink/70">{tc('battery')}</dt>
             <dd className="font-medium text-ink">{model.batteryKwh} kWh</dd>
           </div>
           <div>
-            <dt className="text-ink/55">{tc('fullPrice')}</dt>
+            <dt className="text-ink/70">{tc('fullPrice')}</dt>
             <dd className="font-medium text-ink">{formatRupees(model.priceInr)}</dd>
           </div>
         </dl>
@@ -87,12 +88,12 @@ export function EmiCalculator({
           <p className="font-heading text-xs font-semibold tracking-[0.18em] text-turmeric uppercase">
             {t('monthly')}
           </p>
-          <p
-            data-testid="emi-monthly"
+          <RollingNumber
+            value={emi.monthly}
+            format={formatRupees}
+            dataTestId="emi-monthly"
             className="mt-2 font-heading text-[2.75rem] leading-none font-bold sm:text-5xl"
-          >
-            {formatRupees(emi.monthly)}
-          </p>
+          />
           <p className="mt-1 text-sm text-white/65">
             × {t('months', { count: emi.tenureMonths })}
           </p>

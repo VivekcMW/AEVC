@@ -1,7 +1,23 @@
 import { z } from 'zod'
 
-export const leadKinds = ['test-ride', 'enquiry', 'emi-interest', 'dealer', 'promoter'] as const
+export const leadKinds = [
+  'test-ride',
+  'doorstep-demo',
+  'enquiry',
+  'emi-interest',
+  'dealer',
+  'promoter',
+  'issue',
+  'fleet',
+] as const
 
+export type LeadKind = (typeof leadKinds)[number]
+
+/**
+ * One schema with optional per-kind fields rather than a discriminated union. When the
+ * platform publishes per-kind lead payloads this should become a union keyed on `kind` —
+ * until then a union would be inventing a contract nobody has agreed.
+ */
 export const leadSchema = z.object({
   kind: z.enum(leadKinds),
   name: z.string().trim().min(2, 'Enter your name').max(80),
@@ -14,7 +30,12 @@ export const leadSchema = z.object({
     .trim()
     .regex(/^[1-9][0-9]{5}$/, 'Enter a six-digit pincode')
     .optional(),
+  city: z.string().trim().max(80).optional(),
   modelSlug: z.string().trim().max(64).optional(),
+  dealerId: z.string().trim().max(64).optional(),
+  slotId: z.string().trim().max(64).optional(),
+  /** Order id, booking id or vehicle serial, for support issues. */
+  reference: z.string().trim().max(64).optional(),
   message: z.string().trim().max(1000).optional(),
 })
 

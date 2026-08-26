@@ -82,10 +82,11 @@ export function buildTokens() {
 
 /** Fails the build rather than shipping an inaccessible palette. */
 function assertContrast() {
+  const { ink, mist, forest, turmeric } = color.base
   const checks: [string, string, number, string][] = [
-    ['#14201B', '#F4F6F1', 4.5, 'ink on mist'],
-    ['#FFFFFF', '#0E3B2E', 4.5, 'white on forest'],
-    ['#14201B', '#E8A020', 4.5, 'ink on turmeric'],
+    [ink.value, mist.value, 4.5, 'ink on mist'],
+    ['#FFFFFF', forest.value, 4.5, 'white on forest'],
+    [ink.value, turmeric.value, 4.5, 'ink on turmeric'],
   ]
   for (const [a, b, min, label] of checks) {
     const ratio = contrastRatio(a, b)

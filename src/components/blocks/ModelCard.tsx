@@ -44,10 +44,10 @@ export function ModelCard({ model, locale = 'en' }: { model: VehicleModel; local
             { label: t('spec.battery'), value: model.batteryKwh, unit: 'kWh' },
           ].map((spec) => (
             <div key={spec.label}>
-              <dt className="text-xs tracking-wide text-ink/45">{spec.label}</dt>
+              <dt className="text-xs tracking-wide text-ink/70">{spec.label}</dt>
               <dd className="figure mt-1 text-xl text-ink">
                 {spec.value}
-                <span className="ml-1 text-sm font-normal text-ink/50">{spec.unit}</span>
+                <span className="ml-1 text-sm font-normal text-ink/70">{spec.unit}</span>
               </dd>
             </div>
           ))}

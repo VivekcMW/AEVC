@@ -68,7 +68,7 @@ export default async function EmiPage({ params }: { params: Promise<{ locale: st
                 <li key={step} className="flex gap-4 bg-surface p-5">
                   <span
                     aria-hidden
-                    className="tnum font-heading text-2xl leading-none font-bold text-forest/20"
+                    className="tnum font-heading text-2xl leading-none font-bold text-forest/45"
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>

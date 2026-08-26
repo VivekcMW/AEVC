@@ -79,7 +79,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             {testimonials.map((item) => (
               <li key={item.id} className="border-t border-forest/15 pt-5">
                 <blockquote className="text-xl leading-snug text-ink/85">“{item.quote}”</blockquote>
-                <p className="mt-4 text-sm text-ink/55">
+                <p className="mt-4 text-sm text-ink/70">
                   {item.name} · {item.city}
                 </p>
               </li>

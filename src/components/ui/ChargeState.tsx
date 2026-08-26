@@ -6,9 +6,9 @@ type Status = 'full' | 'low' | 'out'
  * consistent under maintenance. Not a CTA — the accent guard deliberately ignores it.
  */
 const styles: Record<Status, string> = {
-  full: 'bg-charge-full/12 text-charge-full border-charge-full/35',
+  full: 'bg-charge-full/12 text-ink border-charge-full/35',
   low: 'bg-charge-low/15 text-ink border-charge-low/45',
-  out: 'bg-charge-out/12 text-charge-out border-charge-out/35',
+  out: 'bg-charge-out/12 text-ink border-charge-out/35',
 }
 
 export function ChargeState({ status, label }: { status: Status; label: string }) {
@@ -16,7 +16,7 @@ export function ChargeState({ status, label }: { status: Status; label: string }
     <span
       className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium ${styles[status]}`}
     >
-      <span aria-hidden className="size-2 rounded-full bg-current" />
+      <span aria-hidden className={`size-2 rounded-full bg-charge-${status}`} />
       {label}
     </span>
   )

@@ -53,11 +53,14 @@ export default async function ModelDetailPage({
     <>
       <div className="mx-auto max-w-7xl px-5 pt-32 sm:pt-36 pb-20 sm:px-8 lg:pb-28">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <ColourSwitcher
-            colours={model.colours}
-            modelName={model.name}
-            title={t('colourTitle')}
-          />
+          {/* Pinned while the price, CTAs and delivery check scroll past beside it. */}
+          <div className="lg:sticky lg:top-28">
+            <ColourSwitcher
+              colours={model.colours}
+              modelName={model.name}
+              title={t('colourTitle')}
+            />
+          </div>
 
           <div className="flex flex-col gap-6">
             <div>
@@ -78,7 +81,7 @@ export default async function ModelDetailPage({
               <dl className="tnum flex flex-wrap gap-x-6 gap-y-2 border-t border-forest/10 pt-3 text-sm">
                 {tenures.map((emi) => (
                   <div key={emi.tenureMonths}>
-                    <dt className="text-ink/55">{emi.tenureMonths} months</dt>
+                    <dt className="text-ink/70">{emi.tenureMonths} months</dt>
                     <dd className="font-medium text-ink">{formatRupees(emi.monthly)}/mo</dd>
                   </div>
                 ))}

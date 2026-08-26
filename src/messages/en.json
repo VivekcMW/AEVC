@@ -8,7 +8,9 @@
       "calculator": "Calculator",
       "testRide": "Book a Test Ride",
       "dealers": "Find a Dealer",
-      "support": "Support"
+      "support": "Support",
+      "partner": "Partner With Us",
+      "about": "About"
     },
     "cta": {
       "bookNow": "Book Now",
@@ -24,17 +26,61 @@
       "dual": "or {monthly}/month · {tenure} months"
     },
     "skipToContent": "Skip to content",
+    "whatsapp": "Chat on WhatsApp",
+    "whatsappPrefill": "Hi Adhara, I have a question about your electric two-wheelers.",
+    "form": {
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "pincode": "Pincode",
+      "city": "City",
+      "message": "How can we help?",
+      "reference": "Order or booking ID",
+      "referenceHint": "Optional. Helps us find your vehicle faster.",
+      "submit": "Send",
+      "submitting": "Sending",
+      "successTitle": "We've got it.",
+      "successBody": "Your reference is {id}. We'll call you on the number you gave us.",
+      "fallback": "If this keeps failing, call us on 1800 000 0000."
+    },
     "footer": {
       "explore": "Explore",
       "company": "Company",
       "legal": "Legal",
       "placeholderNotice": "Prices, specifications and scheme terms shown on this site are development placeholders pending commercial and legal sign-off.",
-      "rights": "Adhara Energy"
+      "rights": "Adhara Energy",
+      "links": {
+        "vehicles": "Vehicles",
+        "emi": "EMI Scheme",
+        "calculator": "Calculator",
+        "dealers": "Find a dealer",
+        "testRide": "Book a test ride",
+        "support": "Support",
+        "contactUs": "Contact us",
+        "about": "About",
+        "exchange": "Exchange your petrol vehicle",
+        "service": "Service & maintenance",
+        "accessories": "Accessories store",
+        "referral": "Refer a friend",
+        "insurance": "Insurance guide",
+        "trackOrder": "Track my order",
+        "careers": "Careers",
+        "press": "Press & newsroom",
+        "csr": "Sustainability",
+        "corporateInfo": "Corporate information",
+        "partnerDealer": "Become a dealer",
+        "partnerPromoter": "Become a promoter",
+        "grievance": "Grievance redressal",
+        "cookiePolicy": "Cookie policy",
+        "accessibility": "Accessibility statement",
+        "sitemap": "Sitemap"
+      }
     },
     "localeSwitcher": {
       "label": "Language",
       "en": "English",
-      "hi": "हिन्दी"
+      "hi": "हिन्दी",
+      "kn": "ಕನ್ನಡ"
     },
     "spec": {
       "range": "Range",
@@ -43,6 +89,17 @@
       "fullPrice": "Full price",
       "model": "Model",
       "from": "From"
+    },
+    "notFound": {
+      "title": "This page took a wrong turn.",
+      "body": "We couldn't find what you were looking for. It may have moved, or the link might be off by a letter.",
+      "cta": "Back to home"
+    },
+    "error": {
+      "title": "Something went wrong.",
+      "body": "That's on us, not you. Try again, or head back to safer ground.",
+      "retry": "Try again",
+      "cta": "Back to home"
     }
   },
   "home": {
@@ -77,7 +134,8 @@
       "monthly": "Fixed monthly payment",
       "soh": "3-year battery health warranty",
       "delivery": "Home delivery"
-    }
+    },
+    "tickerLabel": "Key differentiators, scrollable"
   },
   "vehicles": {
     "title": "Vehicles",
@@ -155,5 +213,481 @@
       "successBody": "Your reference is {id}. We'll call you on the number you gave us.",
       "fallback": "If this keeps failing, call us on 1800 000 0000."
     }
+  },
+  "buy": {
+    "title": "Buy {model}",
+    "stepLabel": "Step {current} of {total}",
+    "notice": "Preview only — Buy Online is pre-work ahead of the payment gateway and legal sign-off Plan 4 is blocked on. Nothing here is a real order.",
+    "steps": {
+      "colour": "Colour",
+      "pincode": "Delivery",
+      "accessories": "Accessories",
+      "identity": "Verify",
+      "payment": "Pay",
+      "confirmation": "Done"
+    },
+    "colour": {
+      "heading": "Choose a colour",
+      "next": "Continue"
+    },
+    "pincode": {
+      "heading": "Check delivery",
+      "label": "Pincode",
+      "check": "Check",
+      "checking": "Checking",
+      "yes": "We deliver to {pincode} in about {days} days.",
+      "no": "We don't deliver to {pincode} yet.",
+      "failed": "Couldn't check that just now. Try again.",
+      "invalid": "Enter a six-digit Indian pincode.",
+      "next": "Continue",
+      "back": "Back"
+    },
+    "accessories": {
+      "heading": "Add accessories",
+      "helmet": "Helmet",
+      "phoneHolder": "Phone holder",
+      "sideBags": "Side storage bags",
+      "next": "Continue",
+      "back": "Back"
+    },
+    "identity": {
+      "heading": "Verify your number",
+      "phoneLabel": "Mobile number",
+      "requestCta": "Send OTP",
+      "sending": "Sending",
+      "codeLabel": "Enter OTP",
+      "codeHint": "Demo only — any 6-digit code works except 000000.",
+      "verifyCta": "Verify & continue",
+      "verifying": "Verifying",
+      "invalidPhone": "Enter a ten-digit Indian mobile phone number",
+      "invalidCode": "That code didn't verify. Try again.",
+      "sentNotice": "Code sent to {phone}.",
+      "back": "Back"
+    },
+    "payment": {
+      "heading": "Payment",
+      "summary": "Full price",
+      "payCta": "Pay {amount} (mock)",
+      "paying": "Processing",
+      "back": "Back",
+      "notice": "This is a mock payment adapter — no real charge is made."
+    },
+    "confirmation": {
+      "heading": "You're booked.",
+      "body": "Your booking reference is {bookingId}. We'll be in touch about delivery.",
+      "backHome": "Back to home"
+    }
+  },
+  "account": {
+    "title": "My Account",
+    "subtitle": "A preview of what's coming — OTP login and a live EMI ledger, both stubbed until the platform APIs are ready.",
+    "otp": {
+      "phoneLabel": "Mobile number",
+      "requestCta": "Send OTP",
+      "sending": "Sending",
+      "codeLabel": "Enter OTP",
+      "codeHint": "Demo only — any 6-digit code works except 000000.",
+      "verifyCta": "Verify",
+      "verifying": "Verifying",
+      "invalidPhone": "Enter a ten-digit Indian mobile phone number",
+      "invalidCode": "That code didn't verify. Try again.",
+      "sentNotice": "Code sent to {phone}."
+    },
+    "ledger": {
+      "heading": "EMI ledger",
+      "model": "Model",
+      "monthColumn": "Month",
+      "amountColumn": "Amount",
+      "statusPaid": "Paid",
+      "statusDue": "Due now",
+      "statusUpcoming": "Scheduled",
+      "summaryPaid": "{count} of {total} payments made",
+      "logout": "Log out"
+    }
+  },
+  "grievance": {
+    "title": "Grievance Redressal",
+    "intro": "Under the Consumer Protection (E-Commerce) Rules, 2020, every e-commerce entity must publish a Grievance Officer's name and contact details, along with the timeline for acknowledging and resolving a complaint. This page is that publication.",
+    "officerTitle": "Grievance Officer",
+    "officerPending": "A named Grievance Officer has not yet been appointed. This page publishes the mechanism ahead of that appointment so the process is never the missing piece.",
+    "channelsTitle": "How to reach us",
+    "email": "grievance@adharaenergy.example",
+    "phone": "1800 000 0000",
+    "hours": "Monday–Saturday, 10 AM–6 PM IST",
+    "slaTitle": "What you can expect",
+    "ackSla": "Acknowledgement within 48 hours of a grievance being raised.",
+    "resolutionSla": "Resolution within 30 days, per the E-Commerce Rules — sooner wherever possible.",
+    "form": {
+      "title": "Raise a grievance",
+      "body": "Tell us what went wrong. Every message through this form reaches a person, not a queue.",
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "submit": "Submit grievance",
+      "submitting": "Sending",
+      "successTitle": "We've got it.",
+      "successBody": "Your reference is {id}. We'll acknowledge within 48 hours."
+    }
+  },
+  "cookiePolicy": {
+    "title": "Cookie Policy",
+    "intro": "This policy explains what cookies and similar technologies this site uses, and the choices you have under India's Digital Personal Data Protection (DPDP) Act.",
+    "whatTitle": "What cookies do",
+    "whatBody": "A cookie is a small file a site stores in your browser to remember something between visits — that you're logged in, which language you prefer, or that you've already seen a banner.",
+    "categoriesTitle": "What we use",
+    "essential": "Essential — session, locale and security cookies. The site does not function without these.",
+    "analytics": "Analytics — not yet active. Section 6 of the design spec gates this on a GA4 property being provisioned.",
+    "marketing": "Marketing — not yet active. Nothing on this site currently sets an advertising or retargeting cookie.",
+    "controlTitle": "Your choices",
+    "controlBody": "Most browsers let you block or delete cookies in their settings. Blocking essential cookies may keep parts of the site — the language switcher and your EMI calculator selections — from working correctly.",
+    "reviewNotice": "This is a development draft pending legal review before publication."
+  },
+  "corporateInfo": {
+    "title": "Corporate Information",
+    "intro": "Company identification details, published for the transparency Indian e-commerce regulation requires.",
+    "legalNameTitle": "Legal name",
+    "legalName": "[Legal entity name pending incorporation confirmation]",
+    "cinTitle": "Corporate Identification Number (CIN)",
+    "cinPending": "Pending — published here the day it's issued.",
+    "gstinTitle": "GSTIN",
+    "gstinPending": "Pending registration.",
+    "addressTitle": "Registered office",
+    "addressPending": "[Registered office address pending confirmation]",
+    "contactTitle": "Company contact",
+    "email": "hello@adharaenergy.example",
+    "phone": "1800 000 0000"
+  },
+  "accessibility": {
+    "title": "Accessibility Statement",
+    "intro": "Adhara Energy wants every rider to be able to research, compare and enrol without a barrier the site itself put there.",
+    "standardTitle": "Standard we aim for",
+    "standardBody": "WCAG 2.1 Level AA across every page type, verified with automated axe scans and manual keyboard and screen-reader testing.",
+    "featuresTitle": "What's built in",
+    "featureContrast": "Colour choices verified for contrast, including the CTA accent against its background.",
+    "featureKeyboard": "Every interactive element — including the language switcher and colour picker — is reachable and operable by keyboard alone.",
+    "featureMotion": "Every animation respects prefers-reduced-motion and a constrained-network (Save-Data) signal.",
+    "featureFocus": "A visible, high-contrast focus indicator on every focusable element.",
+    "feedbackTitle": "Tell us where we fell short",
+    "feedbackBody": "If you hit a barrier anywhere on this site, we want to know — email us and we'll treat it as a bug, not a suggestion.",
+    "email": "accessibility@adharaenergy.example"
+  },
+  "exchange": {
+    "title": "Exchange your petrol vehicle",
+    "intro": "Trade in your existing petrol two-wheeler and the exchange value comes straight off what you owe under the Adhara scheme — no separate sale, no separate buyer to find.",
+    "howTitle": "How it works",
+    "step1": "Tell us your vehicle's make, model and year below.",
+    "step2": "A dealer inspects it at delivery and confirms the exchange value.",
+    "step3": "That value is adjusted against your first EMI payment.",
+    "noteTitle": "Worth knowing",
+    "noteBody": "The exchange value shown at enquiry is an estimate. The confirmed figure depends on the vehicle's condition at physical inspection.",
+    "form": {
+      "title": "Get an exchange estimate",
+      "body": "Share a few details and a dealer will call you with an estimate.",
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "submit": "Request an estimate",
+      "submitting": "Sending",
+      "successTitle": "Request received.",
+      "successBody": "Your reference is {id}. A dealer will call you about your exchange."
+    }
+  },
+  "service": {
+    "title": "Service & maintenance",
+    "intro": "Scheduled service for the vehicle you already own — separate from finding a dealer to buy from.",
+    "amcTitle": "Annual maintenance plans",
+    "amcBody": "A fixed yearly fee covers scheduled check-ups, brake and tyre wear checks, and software updates. Pricing publishes once the plan is finalised — see the placeholder notice below.",
+    "bookTitle": "Book a service",
+    "bookBody": "Tell us your vehicle and pincode. The nearest service point calls to confirm a slot.",
+    "placeholderNotice": "AMC pricing and slot availability shown here are development placeholders.",
+    "form": {
+      "title": "Book a service",
+      "body": "We'll confirm your slot by phone.",
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "submit": "Request a service slot",
+      "submitting": "Sending",
+      "successTitle": "Request received.",
+      "successBody": "Your reference is {id}. We'll call to confirm a slot."
+    }
+  },
+  "accessories": {
+    "title": "Accessories store",
+    "intro": "Helmets, storage and charging accessories built for the Adhara range — beyond what's offered at checkout.",
+    "catalogTitle": "What's available",
+    "helmet": "ISI-marked helmet",
+    "helmetPrice": "₹899",
+    "phoneHolder": "Handlebar phone holder",
+    "phoneHolderPrice": "₹349",
+    "sideBags": "Side storage bags",
+    "sideBagsPrice": "₹1,499",
+    "charger": "Spare portable charger",
+    "chargerPrice": "₹2,999",
+    "raincover": "Seat & battery rain cover",
+    "raincoverPrice": "₹599",
+    "placeholderNotice": "Prices shown are development placeholders. Online purchase of accessories opens alongside Buy Online.",
+    "cta": "Ask about an accessory",
+    "form": {
+      "title": "Ask about an accessory",
+      "body": "Leave your number and we'll call you with availability and delivery.",
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "submit": "Send enquiry",
+      "submitting": "Sending",
+      "successTitle": "Received.",
+      "successBody": "Your reference is {id}. We'll call you about your accessory."
+    }
+  },
+  "referral": {
+    "title": "Refer a friend",
+    "intro": "Every rider who enrols with your code gets a discount, and you get one too — credited against your own EMI once their vehicle is delivered.",
+    "howTitle": "How it works",
+    "step1": "Share your referral code with a friend.",
+    "step2": "They enter it when they enrol.",
+    "step3": "Once their vehicle is delivered, you both get the credit.",
+    "codeTitle": "Your referral code",
+    "codeNote": "Codes issue once My Account is live. Register your interest below and we'll send yours the day it does.",
+    "form": {
+      "title": "Get early access",
+      "body": "Leave your number and we'll text you your referral code as soon as the programme opens.",
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "submit": "Notify me",
+      "submitting": "Sending",
+      "successTitle": "You're on the list.",
+      "successBody": "Your reference is {id}. We'll text your code when the programme opens."
+    }
+  },
+  "insurance": {
+    "title": "Insurance guide",
+    "intro": "Low-speed electric two-wheelers under 250 W are classified differently from higher-powered vehicles, which changes what insurance you actually need — and whether you need it at all.",
+    "requirementTitle": "Is insurance mandatory?",
+    "requirementBody": "Requirements vary by state and are confirmed alongside the same registration position covered in our FAQs. We don't state a blanket answer here until that's confirmed for your state.",
+    "coverTitle": "What cover typically includes",
+    "coverTheft": "Theft and total loss cover for the vehicle.",
+    "coverDamage": "Accidental damage, including the battery pack.",
+    "coverLiability": "Third-party liability, where applicable.",
+    "partnerTitle": "Our insurance partner",
+    "partnerPending": "A named insurance partner has not yet been confirmed. This page updates the day one is.",
+    "form": {
+      "title": "Ask about insurance",
+      "body": "Leave your number and we'll call you when a partner is confirmed for your state.",
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "submit": "Notify me",
+      "submitting": "Sending",
+      "successTitle": "Noted.",
+      "successBody": "Your reference is {id}. We'll call when insurance is confirmed for your state."
+    }
+  },
+  "careers": {
+    "title": "Careers",
+    "intro": "We're building the vehicles, the scheme and the software that makes low-speed electric transport a real alternative — not a niche one.",
+    "cultureTitle": "How we work",
+    "cultureBody": "Small teams, real ownership, and the same honesty with each other that Section 7 asks us to show a buyer: numbers over adjectives, specifics over vibes.",
+    "openRolesTitle": "Open roles",
+    "openRolesBody": "No roles are posted yet. Leave your details below and we'll reach out when hiring opens in your area of interest.",
+    "form": {
+      "title": "Register your interest",
+      "body": "Tell us a little about what you do, and we'll keep you in mind.",
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "submit": "Register interest",
+      "submitting": "Sending",
+      "successTitle": "Thanks for reaching out.",
+      "successBody": "Your reference is {id}. We'll be in touch when a role fits."
+    }
+  },
+  "press": {
+    "title": "Press & newsroom",
+    "intro": "Company news, brand assets and a direct line to our media contact.",
+    "kitTitle": "Media kit",
+    "kitBody": "Logo files and brand guidelines publish here once the visual identity is finalised.",
+    "newsTitle": "Latest news",
+    "newsEmpty": "Nothing published yet — this section fills in as announcements happen.",
+    "form": {
+      "title": "Media enquiries",
+      "body": "For interviews, comment or assets not yet on this page, reach out directly.",
+      "name": "Your name",
+      "phone": "Mobile number",
+      "phoneHint": "Ten digits, no country code.",
+      "submit": "Send enquiry",
+      "submitting": "Sending",
+      "successTitle": "Received.",
+      "successBody": "Your reference is {id}. Our media contact will follow up."
+    }
+  },
+  "csr": {
+    "title": "Sustainability",
+    "intro": "A low-speed electric two-wheeler only earns its case against petrol if the rest of the story holds up too — where the battery comes from, and where it goes.",
+    "manufacturingTitle": "Manufacturing",
+    "manufacturingBody": "Cell chemistry, supplier standards and factory practices publish here once finalised with our manufacturing partner.",
+    "batteryTitle": "Battery lifecycle",
+    "batteryBody": "Every pack carries a 3-year or 70% state-of-health warranty. A take-back and recycling programme for packs beyond that point is in design.",
+    "communityTitle": "Community",
+    "communityBody": "Programme details for dealer and technician training in the communities we serve publish here as they're confirmed."
+  },
+  "sitemap": {
+    "title": "Sitemap",
+    "intro": "Every page on this site, in one place.",
+    "sections": {
+      "explore": "Explore",
+      "company": "Company",
+      "legal": "Legal"
+    }
+  },
+  "orders": {
+    "title": "Track my order",
+    "intro": "Enter your booking reference and mobile number to see its status.",
+    "referenceLabel": "Booking reference",
+    "referencePlaceholder": "ADH-123456",
+    "phoneLabel": "Mobile number",
+    "phonePlaceholder": "9876543210",
+    "checkCta": "Track order",
+    "checking": "Checking",
+    "notFound": "We couldn't find an order with that reference and number. Double-check both and try again.",
+    "statusEnrolled": "Enrolled",
+    "statusPaying": "Paying monthly",
+    "statusEligible": "Eligible for delivery",
+    "statusDelivered": "Delivered",
+    "placeholderNotice": "Order Tracking previews the My Account experience with mock data ahead of the platform-API integration — enter any reference in the form ADH-000000 to see a sample."
+  },
+  "maintenance": {
+    "title": "We'll be right back.",
+    "body": "Adhara Energy is undergoing scheduled maintenance. We're not gone — just tightening a few bolts. Please check back shortly.",
+    "eta": "Expected back online within the hour.",
+    "contactNote": "If this is urgent, reach us on WhatsApp using the button on any other page."
+  },
+  "dealers": {
+    "title": "Find a dealer",
+    "intro": "Every branch below is on the live dealer network. Call ahead to confirm stock.",
+    "searchLabel": "Your pincode",
+    "search": "Search",
+    "nearest": "Nearest to you",
+    "all": "All branches",
+    "offersTestRide": "Test ride available",
+    "call": "Call",
+    "empty": "No dealers match that search yet. Try a nearby city, or leave your number and we'll tell you when we reach you.",
+    "count": "{count, plural, =0 {No branches} one {1 branch} other {# branches}}",
+    "mapCaption": "Schematic map. Positions are indicative, not to scale."
+  },
+  "testRide": {
+    "title": "Book a test ride",
+    "intro": "Ride it before you decide. Free, no obligation, at a dealer near you or at your door.",
+    "pincodeLabel": "Your pincode",
+    "search": "Find dealers",
+    "chooseDealer": "Choose a dealer",
+    "chooseSlot": "Choose a slot",
+    "unavailable": "Unavailable",
+    "doorstepTitle": "Prefer we come to you?",
+    "doorstepBody": "A doorstep demo brings the vehicle to your home or office — no dealer visit needed.",
+    "form": {
+      "title": "Confirm your test ride",
+      "body": "We'll text you a reminder before your slot."
+    },
+    "doorstepForm": {
+      "title": "Book a doorstep demo",
+      "body": "Share your pincode and we'll schedule a visit."
+    }
+  },
+  "support": {
+    "title": "Support",
+    "intro": "Search the questions other riders have already asked, or reach us directly.",
+    "searchLabel": "Search support",
+    "searchPlaceholder": "e.g. battery, registration, charging",
+    "resultCount": "{count, plural, =0 {No results} one {1 result} other {# results}}",
+    "noMatchTitle": "Nothing matched.",
+    "noMatchBody": "Try a different word, or raise it directly and a person will answer.",
+    "categories": "Browse by category",
+    "allCategories": "All",
+    "raiseIssue": "Raise an issue",
+    "warranty": "Warranty policy",
+    "contact": "Contact us",
+    "whatsapp": "Chat on WhatsApp",
+    "issue": {
+      "title": "Raise an issue",
+      "intro": "Tell us what happened. This creates a support request — real-time ticket tracking arrives once the platform integration lands.",
+      "form": {
+        "title": "Describe the issue",
+        "body": "The more detail, the faster we can help."
+      }
+    },
+    "warranty": {
+      "title": "Warranty policy",
+      "intro": "What's covered, what isn't, and how to make a claim.",
+      "coverTitle": "What's covered",
+      "exclusionsTitle": "What isn't covered",
+      "claimTitle": "Making a claim",
+      "claimBody": "Raise an issue with your order or vehicle reference and we'll guide you through the next step."
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "intro": "Call a dealer directly, chat on WhatsApp, or send a message below.",
+    "dealersTitle": "Call a dealer",
+    "form": {
+      "title": "Send us a message",
+      "body": "We read every message and reply during business hours."
+    }
+  },
+  "partner": {
+    "dealer": {
+      "title": "Become a dealer",
+      "intro": "Bring Adhara to your city. Open territories are limited by design — one dealer per micro-market keeps every partner's volume real.",
+      "investmentTitle": "What it takes",
+      "investmentOutlay": "Indicative outlay",
+      "investmentOutlayValue": "₹8–12 lakh",
+      "investmentSetup": "Setup time",
+      "investmentSetupValue": "45–60 days",
+      "investmentSupport": "Support provided",
+      "investmentSupportValue": "Training, signage, launch stock",
+      "indicativeNotice": "Every figure above is indicative and subject to change until a partnership agreement is signed.",
+      "territoriesTitle": "Territory availability",
+      "statusOpen": "Open",
+      "statusLimited": "Limited",
+      "statusTaken": "Taken",
+      "kycNotice": "This form does not collect KYC documents. Document verification happens in a secure step after we review your application — never through a form field.",
+      "form": {
+        "title": "Apply to become a dealer",
+        "body": "Tell us your city and we'll get in touch."
+      }
+    },
+    "promoter": {
+      "title": "Become a promoter",
+      "intro": "Earn for every rider you bring to Adhara — transparently, with the tiers shown below, not a black box.",
+      "howTitle": "How it works",
+      "step1": "Share your referral link.",
+      "step2": "Someone enrols using it.",
+      "step3": "You get paid — base commission plus any tier bonus.",
+      "earningsTitle": "What you could earn",
+      "enrollments": "Enrolments in a month",
+      "base": "Base",
+      "bonus": "Tier bonus",
+      "total": "Total",
+      "tierNotice": "Tiers commissions are placeholders pending Adhara's final commercial decision.",
+      "kycNotice": "Your referral code issues once KYC completes. KYC happens outside this form.",
+      "form": {
+        "title": "Apply to become a promoter",
+        "body": "Tell us your city and we'll send your onboarding steps."
+      }
+    }
+  },
+  "about": {
+    "title": "About Adhara",
+    "nameMeaning": "आधार — foundation",
+    "nameMeaningBody": "Adhara means foundation, base, support — the thing everything else stands on. That's the argument this whole company makes: a payment scheme you can stand on, without a bank underneath it.",
+    "statsTitle": "Built to a specification, not a slogan",
+    "timelineTitle": "How we got here",
+    "factoryTitle": "The factory floor",
+    "factorySubject1": "Assembly line, wide",
+    "factorySubject2": "Battery pack QC bench",
+    "factorySubject3": "Finished units, dispatch bay",
+    "visitTitle": "Come see it yourself",
+    "visitBody": "{count, plural, one {We have one dealer network branch} other {We have # dealer network branches}} where you can see the vehicles in person."
   }
 }

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import en from './en.json'
 import hi from './hi.json'
+import kn from './kn.json'
 
 function leafKeys(obj: unknown, prefix = ''): string[] {
   if (typeof obj !== 'object' || obj === null) return [prefix]
@@ -17,19 +18,25 @@ describe('message catalogs', () => {
     }
   })
 
-  it('never leaves a Hindi value empty — an empty string defeats the fallback', () => {
-    const empties = leafKeys(hi).filter((k) => {
+  it.each([
+    ['Hindi', hi],
+    ['Kannada', kn],
+  ])('never leaves a %s value empty — an empty string defeats the fallback', (_name, catalog) => {
+    const empties = leafKeys(catalog).filter((k) => {
       const value = k
         .split('.')
-        .reduce<unknown>((acc, part) => (acc as Record<string, unknown>)?.[part], hi)
+        .reduce<unknown>((acc, part) => (acc as Record<string, unknown>)?.[part], catalog)
       return typeof value === 'string' && value.trim() === ''
     })
     expect(empties).toEqual([])
   })
 
-  it('only contains Hindi keys that exist in English', () => {
+  it.each([
+    ['Hindi', hi],
+    ['Kannada', kn],
+  ])('only contains %s keys that exist in English', (_name, catalog) => {
     const enKeys = new Set(leafKeys(en))
-    const orphans = leafKeys(hi)
+    const orphans = leafKeys(catalog)
       .filter((k) => !k.startsWith('$'))
       .filter((k) => !enKeys.has(k))
     expect(orphans).toEqual([])

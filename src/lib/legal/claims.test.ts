@@ -23,3 +23,17 @@ describe('claims registry', () => {
     }
   })
 })
+
+describe('warranty claims', () => {
+  it('has a claim for the state-of-health threshold', () => {
+    expect(getClaim('soh-threshold')).not.toBeNull()
+  })
+
+  it('has a claim for what the warranty excludes', () => {
+    expect(getClaim('warranty-exclusions')).not.toBeNull()
+  })
+
+  it('leaves exclusions unapproved — an exclusion list is a legal document, not marketing copy', () => {
+    expect(getClaim('warranty-exclusions')?.approved).toBe(false)
+  })
+})

@@ -10,21 +10,21 @@
           "name": "color.forest",
           "type": "COLOR",
           "valuesByMode": {
-            "Light": "#0E3B2E"
+            "Light": "#0B0C0A"
           }
         },
         {
           "name": "color.turmeric",
           "type": "COLOR",
           "valuesByMode": {
-            "Light": "#E8A020"
+            "Light": "#C6FF33"
           }
         },
         {
           "name": "color.ink",
           "type": "COLOR",
           "valuesByMode": {
-            "Light": "#14201B"
+            "Light": "#111111"
           }
         },
         {
@@ -45,7 +45,7 @@
           "name": "color.charge.full",
           "type": "COLOR",
           "valuesByMode": {
-            "Light": "#2F9E6B"
+            "Light": "#1F7A52"
           }
         },
         {
@@ -59,7 +59,7 @@
           "name": "color.charge.out",
           "type": "COLOR",
           "valuesByMode": {
-            "Light": "#C6453C"
+            "Light": "#B33A31"
           }
         }
       ]

@@ -5,6 +5,7 @@ import { calculateEmi, scheme } from '@/lib/emi'
 import { formatRupees } from '@/lib/format'
 import type { VehicleModel } from '@/lib/data/types'
 import { Blueprint } from './Blueprint'
+import { ChargeFill } from './ChargeFill'
 import { CircledWord } from './CircledWord'
 import { VehicleGlyph } from './VehicleGlyph'
 
@@ -21,14 +22,17 @@ export async function Hero({ locale, models }: { locale: string; models: Vehicle
 
   return (
     <section className="relative isolate flex min-h-[88svh] flex-col overflow-hidden bg-forest text-white">
-      <Blueprint />
+      <Blueprint className="parallax-back" />
 
       {/* The vehicle sits behind the type at scale, the way a photograph would. */}
       <VehicleGlyph
         colour="transparent"
         label=""
-        className="pointer-events-none absolute right-0 bottom-[22%] h-[38%] w-[96%] text-white/[0.06] sm:w-[70%] lg:top-1/2 lg:right-[2%] lg:bottom-auto lg:h-[46%] lg:w-[46%] lg:-translate-y-[46%]"
+        className="parallax-front pointer-events-none absolute right-0 bottom-[22%] h-[38%] w-[96%] text-white/[0.06] sm:w-[70%] lg:top-1/2 lg:right-[2%] lg:bottom-auto lg:h-[46%] lg:w-[46%] lg:-translate-y-[46%]"
       />
+
+      {/* Ambient charge-fill — atmosphere, not a status; ChargeState still owns that job. */}
+      <ChargeFill className="parallax-back pointer-events-none absolute top-28 right-6 hidden h-8 w-16 text-white/25 sm:block lg:top-32 lg:right-10" />
 
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-5 pt-28 pb-12 sm:px-8 lg:pt-32 lg:pb-16">
         <p className="enter-stagger font-heading text-xs font-semibold tracking-[0.22em] text-turmeric uppercase">
@@ -79,7 +83,12 @@ export async function Hero({ locale, models }: { locale: string; models: Vehicle
 
       {/* Feature ticker. Carries the differentiators without another block of prose. */}
       <div className="enter-stagger enter-delay-3 relative border-t border-white/12">
-        <ul className="mx-auto flex max-w-7xl gap-8 overflow-x-auto px-5 py-4 text-sm whitespace-nowrap text-white/70 sm:px-8 [&::-webkit-scrollbar]:hidden">
+        <ul
+          tabIndex={0}
+          role="list"
+          aria-label={t('tickerLabel')}
+          className="mx-auto flex max-w-7xl gap-8 overflow-x-auto px-5 py-4 text-sm whitespace-nowrap text-white/70 sm:px-8 [&::-webkit-scrollbar]:hidden"
+        >
           {TICKER.map((item) => (
             <li key={item} className="flex shrink-0 items-center gap-2.5">
               <span aria-hidden className="beam-lay h-px w-5 bg-turmeric" />

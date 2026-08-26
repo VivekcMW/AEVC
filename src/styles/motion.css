@@ -84,9 +84,66 @@
   }
 }
 
+/* The floating WhatsApp entry arrives once, shortly after the page settles. */
+@keyframes whatsapp-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6) translate3d(0, 12px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .whatsapp-entry {
+    animation: whatsapp-pop 420ms var(--ease-rise) 500ms backwards;
+  }
+}
+
+/* The ring lands from slightly outside its final position, like it was just drawn on. */
+@keyframes focus-draw {
+  from {
+    outline-offset: 7px;
+    outline-color: transparent;
+  }
+}
+
 @keyframes shimmer {
   to {
     background-position-x: -200%;
+  }
+}
+
+/* Ambient, not a status — loops regardless of scroll, disabled explicitly below for
+   reduced motion rather than gated on it, same treatment as .skeleton's shimmer. */
+@keyframes charge-fill {
+  0%,
+  8% {
+    transform: scaleX(0);
+  }
+  55%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.charge-fill-bar {
+  transform-origin: left center;
+  animation: charge-fill 3.2s var(--ease-beam) infinite;
+}
+
+/*
+ * Parallax depth for the hero. Animates the standalone `translate` property, not
+ * `transform` — Tailwind's own transform utilities (the glyph's lg:-translate-y-[46%])
+ * already own `transform`, so this composes with them instead of clobbering them.
+ */
+@keyframes parallax-drift-down {
+  to {
+    translate: 0 8%;
+  }
+}
+
+@keyframes parallax-drift-up {
+  to {
+    translate: 0 -10%;
   }
 }
 
@@ -182,6 +239,20 @@
       animation-timeline: scroll(root block);
       animation-range: 0 140px;
     }
+
+    /* Hero depth: the grid drifts down slightly slower than the page, the vehicle
+       glyph drifts up slightly faster — the gap between them reads as parallax. */
+    .parallax-back {
+      animation: parallax-drift-down linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+
+    .parallax-front {
+      animation: parallax-drift-up linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
   }
 }
 
@@ -239,6 +310,15 @@
   .lift:hover {
     transform: translate3d(0, -4px, 0);
     box-shadow: 0 18px 40px -24px rgb(20 32 27 / 0.35);
+  }
+}
+
+/* The one primary CTA per screen gets pulled toward the cursor — JS sets the transform
+   inline (Button.tsx), this only supplies the spring back to rest. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .magnetic-cta {
+    transition: transform var(--dur-quick) var(--ease-rise);
+    will-change: transform;
   }
 }
 
@@ -318,4 +398,36 @@
     background-image: none;
     background-color: color-mix(in oklab, var(--adhara-color-forest) 8%, transparent);
   }
+
+  .charge-fill-bar {
+    animation: none !important;
+    transform: scaleX(1);
+  }
+}
+
+/*
+ * Save-Data / constrained-network reset. A large share of Indian mobile traffic runs on
+ * 2G/3G or with Data Saver on — the same motion budget a desktop connection affords is a
+ * real cost there. Mirrors the reduced-motion reset above rather than replacing it: the
+ * two signals are independent (a fast connection can still carry a reduced-motion
+ * preference, and vice versa), so both get applied wherever they're true.
+ */
+:root[data-save-data='true'] *,
+:root[data-save-data='true'] *::before,
+:root[data-save-data='true'] *::after {
+  animation-timeline: none !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+:root[data-save-data='true'] .skeleton {
+  animation: none !important;
+  background-image: none;
+  background-color: color-mix(in oklab, var(--adhara-color-forest) 8%, transparent);
+}
+
+:root[data-save-data='true'] .charge-fill-bar {
+  animation: none !important;
+  transform: scaleX(1);
 }

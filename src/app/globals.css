@@ -27,8 +27,8 @@
   --color-charge-low: var(--adhara-color-charge-low);
   --color-charge-out: var(--adhara-color-charge-out);
 
-  --font-heading: var(--font-anek-latin), system-ui, sans-serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-comfortaa), system-ui, sans-serif;
+  --font-body: var(--font-poppins), system-ui, sans-serif;
   --font-devanagari: var(--font-anek-devanagari), system-ui, sans-serif;
 
   --radius-sm: var(--adhara-radius-sm);
@@ -59,7 +59,7 @@
  * reads as shouting, while restraint reads as confidence — the lesson from the reference.
  */
 .display {
-  font-family: var(--font-anek-latin), system-ui, sans-serif;
+  font-family: var(--font-comfortaa), system-ui, sans-serif;
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 0.98;
@@ -73,9 +73,16 @@
   line-height: 1.22;
 }
 
+:lang(kn) .display {
+  font-family: var(--font-anek-kannada), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.22;
+}
+
 /* Big figures — the numbers this category is actually decided on. */
 .figure {
-  font-family: var(--font-anek-latin), system-ui, sans-serif;
+  font-family: var(--font-comfortaa), system-ui, sans-serif;
   font-variant-numeric: tabular-nums;
   font-feature-settings: 'tnum' 1;
   letter-spacing: -0.03em;
@@ -85,7 +92,7 @@
 body {
   background: var(--adhara-color-mist);
   color: var(--adhara-color-ink);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-poppins), system-ui, sans-serif;
   line-height: var(--adhara-leading-normal);
   -webkit-font-smoothing: antialiased;
 }
@@ -94,12 +101,12 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-anek-latin), system-ui, sans-serif;
+  font-family: var(--font-comfortaa), system-ui, sans-serif;
   line-height: var(--adhara-leading-tight);
   letter-spacing: -0.02em;
 }
 
-/* Hindi sets the whole page in the script-matched sibling face. */
+/* Hindi and Kannada each set the whole page in their script-matched sibling face. */
 :lang(hi) body,
 :lang(hi) h1,
 :lang(hi) h2,
@@ -108,19 +115,30 @@ h4 {
   font-family: var(--font-anek-devanagari), system-ui, sans-serif;
 }
 
+:lang(kn) body,
+:lang(kn) h1,
+:lang(kn) h2,
+:lang(kn) h3,
+:lang(kn) h4 {
+  font-family: var(--font-anek-kannada), system-ui, sans-serif;
+}
+
 /*
  * Devanagari must never be letterspaced: tracking pulls matras away from their
- * consonants and breaks conjuncts. This overrides the tracking utilities that are
- * correct for Latin eyebrows and small caps, so those styles need no locale forks.
- * Latin runs inside Hindi copy — model names, rupee figures — are unaffected visually
- * because they carry no tracking of their own.
+ * consonants and breaks conjuncts. Kannada's vowel signs and conjuncts have the same
+ * fragility. This overrides the tracking utilities that are correct for Latin eyebrows
+ * and small caps, so those styles need no locale forks. Latin runs inside this copy —
+ * model names, rupee figures — are unaffected visually because they carry no tracking
+ * of their own.
  */
-:lang(hi) * {
+:lang(hi) *,
+:lang(kn) * {
   letter-spacing: normal !important;
 }
 
-/* Devanagari has no case, so uppercasing is at best a no-op and at worst confusing. */
-:lang(hi) .uppercase {
+/* Neither script has a case distinction, so uppercasing is at best a no-op and at worst confusing. */
+:lang(hi) .uppercase,
+:lang(kn) .uppercase {
   text-transform: none;
 }
 
@@ -134,4 +152,23 @@ h4 {
   outline: 3px solid var(--adhara-color-turmeric);
   outline-offset: 2px;
   border-radius: 2px;
+}
+
+/* The focus ring "settles in" rather than snapping — same ease-beam vocabulary as ring-draw. */
+@media (prefers-reduced-motion: no-preference) {
+  :where(a, button, input, select, textarea, summary, details):focus-visible {
+    animation: focus-draw 220ms var(--ease-beam);
+  }
+}
+
+/* A stated OS contrast preference gets a bolder, more decisive ring — not just a thicker line. */
+@media (prefers-contrast: more) {
+  :where(a, button, input, select, textarea, summary, details):focus-visible {
+    outline-width: 4px;
+    outline-offset: 3px;
+  }
+
+  :where(.tnum, dt, dd, p, span) {
+    text-shadow: none;
+  }
 }

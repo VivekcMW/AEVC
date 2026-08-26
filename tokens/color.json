@@ -1,16 +1,16 @@
 {
-  "$comment": "Source of truth. Hexes verbatim from proposal Section 2.3 — do not reinterpret.",
+  "$comment": "2026 rebrand around the new lime-on-black mark. Key names (forest/turmeric) kept as-is to avoid renaming every usage site — only the hexes changed.",
   "base": {
-    "forest": { "value": "#0E3B2E", "role": "Headers, nav, secondary buttons, hero grounds" },
-    "turmeric": { "value": "#E8A020", "role": "One primary CTA per screen; never body text" },
-    "ink": { "value": "#14201B", "role": "All body copy" },
+    "forest": { "value": "#0B0C0A", "role": "Headers, nav, secondary buttons, hero grounds — near-black brand ground" },
+    "turmeric": { "value": "#C6FF33", "role": "One primary CTA per screen; never body text — brand lime" },
+    "ink": { "value": "#111111", "role": "All body copy" },
     "mist": { "value": "#F4F6F1", "role": "Page background; white reserved for cards" },
     "surface": { "value": "#FFFFFF", "role": "Cards only" }
   },
   "charge": {
-    "full": { "value": "#2F9E6B", "role": "On-track" },
+    "full": { "value": "#1F7A52", "role": "On-track — darkened 2026-08-26 so ChargeState text meets 4.5:1 on its own tinted background, per the axe sweep" },
     "low": { "value": "#E8A020", "role": "Due soon" },
-    "out": { "value": "#C6453C", "role": "Lapsed or failed" }
+    "out": { "value": "#B33A31", "role": "Lapsed or failed — darkened 2026-08-26, same reason as charge.full" }
   },
   "derive": {
     "hover": -0.08,

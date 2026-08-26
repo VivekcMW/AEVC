@@ -12,7 +12,15 @@ export async function SiteHeader({ locale }: { locale: string }) {
   const nav = [
     { href: `/${locale}/vehicles`, label: t('nav.vehicles') },
     { href: `/${locale}/emi`, label: t('nav.emi') },
+    { href: `/${locale}/test-ride`, label: t('nav.testRide') },
+    { href: `/${locale}/support`, label: t('nav.support') },
+  ]
+  const mobileNav = [
+    ...nav,
     { href: `/${locale}/emi/calculator`, label: t('nav.calculator') },
+    { href: `/${locale}/dealers`, label: t('nav.dealers') },
+    { href: `/${locale}/about`, label: t('nav.about') },
+    { href: `/${locale}/partner/dealer`, label: t('nav.partner') },
   ]
 
   return (
@@ -55,7 +63,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
                 </span>
               </summary>
               <ul className="absolute right-0 mt-3 w-52 overflow-hidden rounded-xl border border-white/12 bg-forest/95 py-1 shadow-xl backdrop-blur-xl">
-                {nav.map((item) => (
+                {mobileNav.map((item) => (
                   <li key={item.href}>
                     <Link href={item.href} className="block px-4 py-3 text-sm text-white/85">
                       {item.label}

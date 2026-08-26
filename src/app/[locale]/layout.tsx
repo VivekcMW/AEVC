@@ -5,7 +5,9 @@ import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { SiteFooter } from '@/components/blocks/SiteFooter'
 import { RouteTransition } from '@/components/blocks/RouteTransition'
+import { SaveDataDetector } from '@/components/blocks/SaveDataDetector'
 import { SiteHeader } from '@/components/blocks/SiteHeader'
+import { WhatsAppEntry } from '@/components/blocks/WhatsAppEntry'
 import { fontClassNames } from '@/lib/fonts.loaders'
 import '../globals.css'
 
@@ -40,12 +42,14 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={fontClassNames(locale)}>
       <body className="flex min-h-dvh flex-col">
+        <SaveDataDetector />
         <NextIntlClientProvider>
           <SiteHeader locale={locale} />
           <main id="main" className="flex-1">
             <RouteTransition>{children}</RouteTransition>
           </main>
           <SiteFooter locale={locale} />
+          <WhatsAppEntry locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

@@ -41,6 +41,20 @@ export const claims: LegalClaim[] = [
     approved: false,
     fallback: 'Home delivery is available in serviceable pincodes. Check yours above.',
   },
+  {
+    id: 'soh-threshold',
+    text: 'Your battery is covered if it falls below 70% state of health within 3 years.',
+    approved: true,
+    fallback: 'Battery state-of-health cover is stated on your invoice.',
+  },
+  {
+    id: 'warranty-exclusions',
+    text: 'Physical damage, water ingress, unauthorised repair and non-Adhara chargers are not covered.',
+    approved: false,
+    fallback:
+      'Exclusions apply. The full warranty document is issued with your vehicle and is the ' +
+      'authoritative version.',
+  },
 ]
 
 export function getClaim(id: string): LegalClaim | null {

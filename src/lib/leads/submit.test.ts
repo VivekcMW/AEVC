@@ -71,3 +71,43 @@ describe('submitLead', () => {
     expect(new Set(ids).size).toBe(3)
   })
 })
+
+describe('extended lead kinds', () => {
+  it('accepts a test-ride booking carrying a dealer and a slot', async () => {
+    const result = await submitLead(
+      { kind: 'test-ride', name: 'Ravi Menon', phone: '9812345670', dealerId: 'd-pune-01', slotId: 's1' },
+      attribution,
+      '4.4.4.4',
+    )
+    expect(result.ok).toBe(true)
+    expect(readAll().at(-1)?.lead.slotId).toBe('s1')
+  })
+
+  it('accepts a support issue carrying a reference', async () => {
+    const result = await submitLead(
+      { kind: 'issue', name: 'Meera Rao', phone: '9812345671', reference: 'ADH-12345', message: 'Battery not charging' },
+      attribution,
+      '5.5.5.5',
+    )
+    expect(result.ok).toBe(true)
+    expect(readAll().at(-1)?.lead.reference).toBe('ADH-12345')
+  })
+
+  it('rejects a kind the platform does not recognise', async () => {
+    const result = await submitLead(
+      { kind: 'not-a-kind', name: 'X Y', phone: '9812345672' },
+      attribution,
+      '6.6.6.6',
+    )
+    expect(result.ok).toBe(false)
+  })
+
+  it('truncates nothing silently — an over-long message is rejected, not trimmed', async () => {
+    const result = await submitLead(
+      { kind: 'enquiry', name: 'A B', phone: '9812345673', message: 'x'.repeat(1001) },
+      attribution,
+      '7.7.7.7',
+    )
+    expect(result.ok).toBe(false)
+  })
+})
